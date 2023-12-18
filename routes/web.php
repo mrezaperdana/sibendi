@@ -31,5 +31,5 @@ Route::group(['prefix' => 'admin',], function () {
     
     Route::post('admins.stocks.status-barang', [AdminController::class, 'changePassword'])->name('AdminChangePassword');
     Route::post('admins.stocks.stok-barang', [AdminController::class, 'index'])->name('AdminChangePassword');
-    Route::get('admins.dashboards.index', [AdminController::class, 'index'])->name('AdminDashboard');
+    Route::resource('dashboards', AdminController::class);
 });

@@ -1788,7 +1788,7 @@
 													<th class="min-w-200px">Nama Barang</th>
 													<th class="text-end min-w-100px">Kode Barang</th>
 													<th class="text-end min-w-70px">Kategori</th>
-													<th class="text-end min-w-100px">Unit</th>
+													<th class="text-end min-w-100px">Satuan</th>
 													<th class="text-end min-w-100px">Harga</th>
 													<th class="text-end min-w-100px">Masuk</th>
 													<th class="text-end min-w-100px">Keluar</th>
