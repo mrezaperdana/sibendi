@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('barang-keluar', [AdminStockController::class, 'getBarangKeluar'])->name('admins.stocks.barang-keluar');
     Route::get('barang-rusak', [AdminStockController::class, 'getBarangRusak'])->name('admins.stocks.barang-rusak');
     Route::get('stok-barang', [AdminStockController::class, 'getStokBarang'])->name('admins.stocks.stok-barang');
+    Route::get('tambah-barang', [AdminStockController::class, 'getTambahBarang'])->name('admins.stocks.tambah-barang');
     Route::get('add-product', [AdminStockController::class, 'addProduct'])->name('admins.add.add-product');
     Route::post('post-product', [AdminStockController::class, 'postProduct'])->name('admins.post.post-product');
     // Route::resource('dashboards', AdminController::class);

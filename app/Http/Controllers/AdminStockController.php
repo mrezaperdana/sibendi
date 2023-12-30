@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminStock;
+use App\Models\BarangKeluar;
+use App\Models\BarangMasuk;
+use App\Models\BarangRusak;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class AdminStockController extends Controller
@@ -19,27 +23,69 @@ class AdminStockController extends Controller
      */
     public function getBarangMasuk()
     {
+        $result = BarangMasuk::join('barangs', 'barang_masuks.Kode_Barang', '=', 'barangs.Kode_Barang')
+        ->select('barangs.Nama_Barang', 'barang_masuks.Tanggal', 'barang_masuks.No_Nota', 'barang_masuks.Kode_Barang', 'barang_masuks.Sat', 'barang_masuks.Harga_Satuan', 'barang_masuks.Qty')
+        ->get();
         // Pass the values to the view
         return view('admins.stocks.barang-masuk', [
+            'barangmasuk' => $result
         ]);
     }
     public function getBarangKeluar()
-    {
+    {   
+        $result = BarangKeluar::join('barangs', 'barang_keluars.Kode_Barang', '=', 'barangs.Kode_Barang')
+        ->select('barangs.Nama_Barang', 'barang_keluars.Tanggal', 'barang_keluars.No_Nota', 'barang_keluars.Kode_Barang', 'barang_keluars.Sat', 'barang_keluars.Harga_Satuan', 'barang_keluars.Qty')
+        ->get();
+
         // Pass the values to the view
         return view('admins.stocks.barang-keluar', [
+            'barangkeluar' => $result
         ]);
     }
     public function getBarangRusak()
-    {
+    {   
+        $result = BarangRusak::join('barangs', 'barang_rusaks.Kode_Barang', '=', 'barangs.Kode_Barang')
+        ->select('barangs.Nama_Barang', 'barang_rusaks.Tanggal', 'barang_rusaks.No_Nota', 'barang_rusaks.Kode_Barang', 'barang_rusaks.Sat', 'barang_rusaks.Harga_Satuan', 'barang_rusaks.Qty')
+        ->get();
         // Pass the values to the view
         return view('admins.stocks.barang-rusak', [
+            'barangrusak' => $result
         ]);
     }
     public function getStokBarang()
-    {
-        // Pass the values to the view
-        return view('admins.stocks.stok-barang', [
-        ]);
+    {   
+        $result = Barang::join('barang_rusaks', 'barang_rusaks.Kode_Barang', '=', 'barangs.Kode_Barang')
+        ->join('barang_masuks', 'barang_masuks.Kode_Barang', '=', 'barangs.Kode_Barang')
+        ->join('barang_keluars', 'barang_keluars.Kode_Barang', '=', 'barangs.Kode_Barang')
+        ->select(
+            'barangs.Nama_Barang',
+            'barangs.Kode_Barang',
+            'barangs.Kategori',
+            'barangs.Unit',
+            'barangs.Harga_Satuan',
+            'barang_masuks.Qty as masuk_qty',
+            'barang_rusaks.Qty as rusak_qty',
+            'barang_keluars.Qty as keluar_qty'
+        )
+        ->get();
+    
+    // Calculate 'total' based on the quantities
+    $result->transform(function ($item) {
+        $item->total = $item->masuk_qty - $item->rusak_qty - $item->keluar_qty;
+        return $item;
+    });
+    }
+    
+    public function getTambahBarang()
+    {   
+       
+    
+    
+    // Pass the values to the view
+    return view('admins.stocks.tambah-barang', [
+       
+    ]);
+
     }
     
     
