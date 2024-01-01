@@ -1,7 +1,4 @@
-@extends('layouts.main.main')
-
-
-
+@extends('layouts.main.admins.main')
 
 @section('content-wrapper')
     <!--begin::Toolbar-->
@@ -97,7 +94,7 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admins.add.add-product') }}" class="btn btn-primary">Add Product</a>
+                        <a href="{{ route('admins.barangs.create') }}" class="btn btn-primary">Add Product</a>
                         <!--end::Add product-->
                     </div>
                     <!--end::Card toolbar-->
@@ -166,7 +163,7 @@
                                         {{ 'Rp ' . number_format($sb->Harga_Satuan, 0, ',', '.') }}
 
                                     </td>
-                                 
+
                                     <td class="text-end pe-0">
                                         {{ $sb->masuk_qty }}
 
@@ -183,7 +180,7 @@
                                         {{ $sb->total }}
 
                                     </td>
-                                   
+
                                     <td class="text-end">
                                         <a href="#"
                                             class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
@@ -208,7 +205,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
 
                         </tbody>
                     </table>

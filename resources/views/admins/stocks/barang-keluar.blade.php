@@ -1,7 +1,4 @@
-@extends('layouts.main.main')
-
-
-
+@extends('layouts.main.admins.main')
 
 @section('content-wrapper')
     <!--begin::Toolbar-->
@@ -202,7 +199,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
 
                         </tbody>
                     </table>

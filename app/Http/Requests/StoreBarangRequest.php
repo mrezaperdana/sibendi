@@ -11,7 +11,7 @@ class StoreBarangRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,11 @@ class StoreBarangRequest extends FormRequest
     {
         return [
             //
+            'Kode_Barang' => 'required|string|max:255',
+            'Nama_Barang' => 'required|string',
+            'Unit' => 'required|string',
+            'Kategori' => 'required|string',
+            'Harga_Satuan' => 'required|numeric|min:0',
         ];
     }
 }

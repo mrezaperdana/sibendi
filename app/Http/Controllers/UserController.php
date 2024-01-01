@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Barang;
-use App\Http\Requests\StoreBarangRequest;
-use App\Http\Requests\UpdateBarangRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class BarangController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // Pass the values to the view
+        return view('users.dashboards.index', []);
     }
 
     /**
@@ -22,25 +22,20 @@ class BarangController extends Controller
     public function create()
     {
         //
-        return view('admins.stocks.tambah-barang', []);
     }
-
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBarangRequest $request)
+    public function store(Request $request)
     {
         //
-        Barang::create($request->validated());
-
-        return redirect()->route('admins.stocks.stok-barang');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Barang $barang)
+    public function show(User $user)
     {
         //
     }
@@ -48,7 +43,7 @@ class BarangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Barang $barang)
+    public function edit(User $user)
     {
         //
     }
@@ -56,7 +51,7 @@ class BarangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBarangRequest $request, Barang $barang)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -64,7 +59,7 @@ class BarangController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barang $barang)
+    public function destroy(User $user)
     {
         //
     }

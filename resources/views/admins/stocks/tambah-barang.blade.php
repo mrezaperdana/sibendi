@@ -1,4 +1,4 @@
-@extends('layouts.main.main')
+@extends('layouts.main.admins.main')
 
 @section('content-wrapper')
 
@@ -65,7 +65,9 @@
             <form id="kt_ecommerce_add_category_form"
                 class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework"
                 data-kt-redirect="/saul-html-pro/apps/ecommerce/catalog/categories.html"
-                data-select2-id="select2-data-kt_ecommerce_add_category_form">
+                data-select2-id="select2-data-kt_ecommerce_add_category_form" method="POST"
+                action="{{ route('barangs.store') }}"">
+                @csrf
                 <!--begin::Aside column-->
                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10"
                     data-select2-id="select2-data-137-2hkf">
@@ -137,7 +139,8 @@
                             <!--end::Image input-->
 
                             <!--begin::Description-->
-                            <div class="text-muted fs-7">Pilih gambar untuk barang yang akan ditambahkan. Hanya *.png, *.jpg dan *.jpeg dengan ukuran kurang dari 1mb.</div>
+                            <div class="text-muted fs-7">Pilih gambar untuk barang yang akan ditambahkan. Hanya *.png, *.jpg
+                                dan *.jpeg dengan ukuran kurang dari 1mb.</div>
                             <!--end::Description-->
                         </div>
                         <!--end::Card body-->
@@ -165,14 +168,16 @@
                         <!--begin::Card body-->
                         <div class="card-body pt-0" data-select2-id="select2-data-135-xnvf">
                             <!--begin::Select2-->
-                            <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Pilih kategori" class="form-select form-select-solid form-select-lg fw-semibold">
+                            <select name="Kategori" id="Kode_Barang" aria-label="Select a Country" data-control="select2"
+                                data-placeholder="Pilih kategori"
+                                class="form-select form-select-solid form-select-lg fw-semibold">
                                 <option value="">Pilih kategori...</option>
-                                <option data-kt-flag="flags/afghanistan.svg" value="AF">Alat Tulis</option>
-                                <option data-kt-flag="flags/aland-islands.svg" value="AX">Perlengkapan</option>
-                                <option data-kt-flag="flags/albania.svg" value="AL">Kuesioner</option>
-                                
+                                <option data-kt-flag="flags/afghanistan.svg" value="Alat Tulis">Alat Tulis</option>
+                                <option data-kt-flag="flags/aland-islands.svg" value="Perlengkapan">Perlengkapan</option>
+                                <option data-kt-flag="flags/albania.svg" value="Kuesioner">Kuesioner</option>
+
                             </select>
-                           
+
                             <!--end::Select2-->
 
                             <!--begin::Description-->
@@ -192,7 +197,7 @@
                         <!--end::Card body-->
                     </div>
                     <!--end::Status-->
-                  
+
                 </div>
                 <!--end::Aside column-->
 
@@ -217,8 +222,8 @@
                                 <!--end::Label-->
 
                                 <!--begin::Input-->
-                                <input type="text" name="category_name" class="form-control mb-2"
-                                    placeholder="Kode barang" value="">
+                                <input type="text" name="Kode_Barang" id="Kode_Barang" class="form-control mb-2"
+                                    placeholder="Kode barang" value="{{ old('Kode_Barang') }}">
                                 <!--end::Input-->
 
                                 <!--begin::Description-->
@@ -237,8 +242,9 @@
                                 <!--end::Label-->
 
                                 <!--begin::Input-->
-                                <input type="text" name="category_name" class="form-control mb-2"
-                                    placeholder="Nama barang" value="">
+
+                                <input type="text" name="Nama_Barang" id="Nama_Barang" class="form-control mb-2"
+                                    placeholder="Nama barang" value="{{ old('Nama_Barang') }}">
                                 <!--end::Input-->
 
                                 <!--begin::Description-->
@@ -250,7 +256,7 @@
                                 </div>
                             </div>
                             <!--end::Input group-->
-                        
+
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
@@ -258,8 +264,8 @@
                                 <!--end::Label-->
 
                                 <!--begin::Input-->
-                                <input type="text" name="category_name" class="form-control mb-2"
-                                    placeholder="Satuan" value="">
+                                <input type="text" name="Unit" id="Unit" class="form-control mb-2"
+                                    placeholder="Satuan" value="{{ old('Unit') }}">
                                 <!--end::Input-->
 
                                 <!--begin::Description-->
@@ -278,8 +284,8 @@
                                 <!--end::Label-->
 
                                 <!--begin::Input-->
-                                <input type="text" name="category_name" class="form-control mb-2"
-                                    placeholder="Harga satuan" value="">
+                                <input type="text" name="Harga_Satuan" id="Harga_Satuan" class="form-control mb-2"
+                                    placeholder="Satuan" value="{{ old('Harga_Satuan') }}">
                                 <!--end::Input-->
 
                                 <!--begin::Description-->
@@ -291,7 +297,7 @@
                                 </div>
                             </div>
                             <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- <!--begin::Input group-->
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Stok Barang</label>
@@ -310,15 +316,13 @@
                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
                                 </div>
                             </div>
-                            <!--end::Input group-->
+                            <!--end::Input group--> --}}
 
-                            
                         </div>
                         <!--end::Card header-->
                     </div>
                     <!--end::General options-->
-                  
-                   
+
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
                         <a href="/saul-html-pro/apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel"
@@ -330,7 +334,7 @@
                         <!--begin::Button-->
                         <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
                             <span class="indicator-label">
-                               Simpan
+                                Simpan
                             </span>
                             <span class="indicator-progress">
                                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
