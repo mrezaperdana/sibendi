@@ -47,103 +47,21 @@
              <!--end:Menu item-->
 
              <!--begin:Menu item-->
-             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+             <div data-kt-menu-trigger="click" class="menu-item">
                  <!--begin:Menu link-->
-                 <span class="menu-link">
-                     <span class="menu-icon">
-                         <i class="ki-duotone ki-basket fs-1">
-                             <span class="path1"></span>
-                             <span class="path2"></span>
-                             <span class="path3"></span>
-                         </i>
-                     </span>
-                     <span class="menu-title">Stocks</span>
-                     <span class="menu-arrow"></span>
-                 </span>
+                 <a class="menu-item active" href="{{ route('users.pengajuans') }}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-basket fs-1">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Pengajuan Saya</span>
+                    </span>
+                 </a>
                  <!--end:Menu link-->
-                 <!--begin:Menu sub-->
-                 <div class="menu-sub menu-sub-accordion">
-                     <!--begin:Menu item-->
-                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                         <!--begin:Menu link-->
-                         <span class="menu-link">
-                             <span class="menu-bullet">
-                                 <span class="bullet bullet-dot"></span>
-                             </span>
-                             <span class="menu-title">Daftar Barang</span>
-                             <span class="menu-arrow"></span>
-                         </span>
-                         <!--end:Menu link-->
-                         <!--begin:Menu sub-->
-                         <div class="menu-sub menu-sub-accordion menu-active-bg">
-
-                             <!--begin:Menu item-->
-                             <div class="menu-item">
-                                 <!--begin:Menu link-->
-                                 <a class="menu-link" href="{{ route('admins.stocks.barang-masuk') }}">
-                                     <span class="menu-bullet">
-                                         <span class="bullet bullet-dot"></span>
-                                     </span>
-                                     <span class="menu-title">Barang Masuk</span>
-                                 </a>
-                                 <!--end:Menu link-->
-                             </div>
-                             <!--end:Menu item-->
-                             <!--begin:Menu item-->
-                             <div class="menu-item">
-                                 <!--begin:Menu link-->
-                                 <a class="menu-link" href="{{ route('admins.stocks.barang-keluar') }}">
-                                     <span class="menu-bullet">
-                                         <span class="bullet bullet-dot"></span>
-                                     </span>
-                                     <span class="menu-title">Barang Keluar</span>
-                                 </a>
-                                 <!--end:Menu link-->
-                             </div>
-                             <!--end:Menu item-->
-                             <!--begin:Menu item-->
-                             <div class="menu-item">
-                                 <!--begin:Menu link-->
-                                 <a class="menu-link" href="{{ route('admins.stocks.barang-rusak') }}">
-                                     <span class="menu-bullet">
-                                         <span class="bullet bullet-dot"></span>
-                                     </span>
-                                     <span class="menu-title">Barang Rusak</span>
-                                 </a>
-                                 <!--end:Menu link-->
-                             </div>
-                             <!--end:Menu item-->
-
-                         </div>
-                         <!--end:Menu sub-->
-                     </div>
-                     <!--end:Menu item-->
-                     <!--begin:Menu item-->
-                     <div class="menu-item">
-                         <!--begin:Menu link-->
-                         <a class="menu-link" href="{{ route('admins.stocks.stok-barang') }}">
-                             <span class="menu-bullet">
-                                 <span class="bullet bullet-dot"></span>
-                             </span>
-                             <span class="menu-title">Stok Barang</span>
-                         </a>
-                         <!--end:Menu link-->
-                     </div>
-                     <!--end:Menu item-->
-                     <!--begin:Menu item-->
-                     <div class="menu-item">
-                         <!--begin:Menu link-->
-                         <a class="menu-link" href="{{ route('admins.barangs.create') }}">
-                             <span class="menu-bullet">
-                                 <span class="bullet bullet-dot"></span>
-                             </span>
-                             <span class="menu-title">Tambah Barang</span>
-                         </a>
-                         <!--end:Menu link-->
-                     </div>
-                     <!--end:Menu item-->
-                 </div>
-                 <!--end:Menu sub-->
              </div>
              <!--end:Menu item-->
              <!--begin:Menu item-->

@@ -23,7 +23,8 @@ class TransaksiSeeder extends Seeder
                     "No_Nota"       => $data[1],
                     "Penerima"      => $data[2],
                     "Kode_Barang"   => $data[3],
-                    "Keterangan"    => $data[4],
+                    "Jumlah"   => $data[4],
+                    "Keterangan"    => $data[5],
                 ]);
             }
             $firstline = false;

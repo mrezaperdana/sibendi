@@ -88,7 +88,7 @@
 						</div>
 						<!--end::Sidebar toggle-->
 					</div>
-					@include('layouts.main.navbar')
+					@include('layouts.main.admins.navbar')
 				</div>
 				<!--end::Header main-->
 				<!--begin::Separator-->
@@ -106,7 +106,7 @@
 						@yield('content-wrapper')
 					</div>
 					<!--end::Content wrapper-->
-					@include('layouts.main.footer')
+					@include('layouts.main.admins.footer')
 				</div>
 				<!--end:::Main-->
 			</div>
@@ -1377,8 +1377,8 @@
 
 	
 
-	@include('layouts.main.buttons.scrolltop')
-	@include('layouts.main.script')
+	@include('layouts.main.admins.buttons.scrolltop')
+	@include('layouts.main.admins.script')
 </body>
 <!--end::Body-->
 

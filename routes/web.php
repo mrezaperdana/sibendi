@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PengajuanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,7 @@ Route::get('/stok-barang', function () {
     return view('admins.stocks.stok-barang');
 });
 
+Route::get('login', [LoginController::class, 'index'])->name('site.login');
 
 Route::group(['prefix' => 'admin',], function () {
 
@@ -64,4 +67,12 @@ Route::group(['prefix' => 'user',], function () {
     Route::post('admins.stocks.status-barang', [AdminController::class, 'changePassword'])->name('AdminChangePassword');
     Route::post('admins.stocks.stok-barang', [AdminController::class, 'index'])->name('AdminChangePassword');
     Route::get('dashboards', [UserController::class, 'index'])->name('users.dashboards');
+
+
+    Route::get('pengajuan-saya', [PengajuanController::class, 'index'])->name('users.pengajuans');
+    Route::get('/pengajuan/baru', [PengajuanController::class, 'create'])->name('users.pengajuans.create');
+    Route::post('/pengajuans', [PengajuanController::class, 'store'])->name('pengajuans.store');
+    Route::get('/barangs/{barang}/edit', [BarangController::class, 'edit'])->name('barangs.edit');
+    Route::patch('/barangs/{barang}', [BarangController::class, 'update'])->name('barangs.update');
+    Route::delete('/barangs/{barang}', [BarangController::class, 'destroy'])->name('barangs.destroy');
 });

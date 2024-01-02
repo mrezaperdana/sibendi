@@ -2,7 +2,7 @@
 <div class="app-navbar flex-grow-1 justify-content-end" id="kt_app_header_navbar">
 	<div class="app-navbar-item d-flex align-items-stretch flex-lg-grow-1 me-2 me-lg-0">
 	</div>
-	@include('layouts.main.navbar.notification')
+	@include('layouts.main.users.navbar.notification')
 	<!--begin::User menu-->
 	<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
 		<!--begin::Menu wrapper-->
@@ -181,7 +181,7 @@
 			<!--end::Menu item-->
 			<!--begin::Menu item-->
 			<div class="menu-item px-5">
-				<a href="../dist/authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+				<a href="{{ route('site.login') }}" class="menu-link px-5">Sign Out</a>
 			</div>
 			<!--end::Menu item-->
 		</div>

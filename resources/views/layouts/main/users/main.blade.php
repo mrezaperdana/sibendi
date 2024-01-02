@@ -88,7 +88,7 @@
 						</div>
 						<!--end::Sidebar toggle-->
 					</div>
-					@include('layouts.main.navbar')
+					@include('layouts.main.users.navbar')
 				</div>
 				<!--end::Header main-->
 				<!--begin::Separator-->
@@ -98,7 +98,7 @@
 			<!--end::Header-->
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-				@include('layouts.sidebars.admins.admin-sidebar')
+				@include('layouts.sidebars.users.user-sidebar')
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
 					<!--begin::Content wrapper-->
@@ -106,7 +106,7 @@
 						@yield('content-wrapper')
 					</div>
 					<!--end::Content wrapper-->
-					@include('layouts.main.footer')
+					@include('layouts.main.users.footer')
 				</div>
 				<!--end:::Main-->
 			</div>
@@ -1377,8 +1377,8 @@
 
 	
 
-	@include('layouts.main.buttons.scrolltop')
-	@include('layouts.main.script')
+	@include('layouts.main.users.buttons.scrolltop')
+	@include('layouts.main.users.script')
 </body>
 <!--end::Body-->
 

@@ -66,7 +66,7 @@
                 class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework"
                 data-kt-redirect="/saul-html-pro/apps/ecommerce/catalog/categories.html"
                 data-select2-id="select2-data-kt_ecommerce_add_category_form" method="POST"
-                action="{{ route('barangs.store') }}"">
+                action="{{ route('barangs.store') }}">
                 @csrf
                 <!--begin::Aside column-->
                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10"
