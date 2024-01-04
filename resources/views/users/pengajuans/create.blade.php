@@ -68,7 +68,7 @@
                 data-select2-id="select2-data-kt_ecommerce_add_category_form" method="POST"
                 action="{{ route('pengajuans.store') }}">
                 @csrf
-          
+
                 <!--begin::Main column-->
                 <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                     <!--begin::General options-->
@@ -106,11 +106,12 @@
 
                                                         <!--end::Select2-->
                                                     </div>
-                                                    
+
                                                     <div class="col-md-2">
                                                         <label class="form-label">Jumlah:</label>
-                                                        <input type="text" name="Jumlah" id="Jumlah" 
-                                                        placeholder="Jumlah" value="{{ old('Jumlah') }}" class="form-control mb-2 mb-md-0"
+                                                        <input type="text" name="Jumlah" id="Jumlah"
+                                                            placeholder="Jumlah" value="{{ old('Jumlah') }}"
+                                                            class="form-control mb-2 mb-md-0"
                                                             placeholder="Masukkan jumlah pengajuan">
                                                     </div>
 
@@ -118,10 +119,9 @@
                                                         <a href="javascript:;" data-repeater-delete=""
                                                             class="btn btn-sm btn-flex flex-center btn-light-danger mt-3 mt-md-9">
                                                             <i class="ki-duotone ki-trash fs-5"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span><span
-                                                                    class="path3"></span><span
-                                                                    class="path4"></span><span class="path5"></span></i>
+                                                                    class="path1"></span><span class="path2"></span><span
+                                                                    class="path3"></span><span class="path4"></span><span
+                                                                    class="path5"></span></i>
                                                             Delete
                                                         </a>
                                                     </div>
@@ -149,7 +149,7 @@
 
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{route('users.pengajuans')}}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{ route('users.pengajuans') }}" id="kt_ecommerce_add_product_cancel"
                             class="btn btn-light me-5">
                             Batal
                         </a>

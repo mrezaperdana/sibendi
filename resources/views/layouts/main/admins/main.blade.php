@@ -1379,6 +1379,7 @@
 
 	@include('layouts.main.admins.buttons.scrolltop')
 	@include('layouts.main.admins.script')
+	@yield('script')
 </body>
 <!--end::Body-->
 

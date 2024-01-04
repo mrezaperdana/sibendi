@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('Kode_Barang');
             $table->integer('Jumlah');
             $table->string('Keterangan')->nullable();
+            $table->integer('Status')->default(0);
             $table->timestamps();
 
             

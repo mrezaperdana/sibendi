@@ -33,6 +33,7 @@ Route::get('/stok-barang', function () {
 });
 
 Route::get('login', [LoginController::class, 'index'])->name('site.login');
+Route::get('send', [PengajuanController::class, 'sendNotification']);
 
 Route::group(['prefix' => 'admin',], function () {
 
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/barangs', [BarangController::class, 'index'])->name('barangs.index');
     Route::get('/barangs/create', [BarangController::class, 'create'])->name('admins.barangs.create');
     Route::post('/barangs', [BarangController::class, 'store'])->name('barangs.store');
+    Route::post('/barangs-excel', [BarangController::class, 'storeExcel'])->name('barangs.excel-store');
     Route::get('/barangs/{barang}/edit', [BarangController::class, 'edit'])->name('barangs.edit');
     Route::patch('/barangs/{barang}', [BarangController::class, 'update'])->name('barangs.update');
     Route::delete('/barangs/{barang}', [BarangController::class, 'destroy'])->name('barangs.destroy');

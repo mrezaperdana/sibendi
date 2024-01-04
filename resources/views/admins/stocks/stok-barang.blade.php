@@ -1,6 +1,8 @@
 @extends('layouts.main.admins.main')
 
 @section('content-wrapper')
+@include('skipped_items', ['skippedItems' => session('skippedItems', [])])
+
     <!--begin::Toolbar-->
     <div id="kt_app_toolbar" class="app-toolbar pt-5">
         <!--begin::Toolbar container-->
@@ -218,5 +220,16 @@
 
     </div>
     <!--end::Content-->
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var skippedItems = @json(session('skippedItems', []));
+    
+            console.log(skippedItems); // Log skipped items to console
+    
+            if (skippedItems.length > 0) {
+                $('#skippedItemsModal').modal('show');
+            }
+        });
+    </script>
 @stop

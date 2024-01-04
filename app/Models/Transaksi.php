@@ -16,4 +16,10 @@ class Transaksi extends Model
         'Penerima',
         'Keterangan',
     ];
+
+    // Transaksi.php
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'Kode_Barang', 'Kode_Barang');
+    }
 }

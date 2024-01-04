@@ -54,21 +54,21 @@ class AdminStockController extends Controller
     }
     public function getStokBarang()
     {
-        // $result = Barang::join('barang_rusaks', 'barang_rusaks.Kode_Barang', '=', 'barangs.Kode_Barang')
-        //     ->join('barang_masuks', 'barang_masuks.Kode_Barang', '=', 'barangs.Kode_Barang')
-        //     ->join('barang_keluars', 'barang_keluars.Kode_Barang', '=', 'barangs.Kode_Barang')
-        //     ->select(
-        //         'barangs.Nama_Barang',
-        //         'barangs.Kode_Barang',
-        //         'barangs.Kategori',
-        //         'barangs.Unit',
-        //         'barangs.Harga_Satuan',
-        //         'barang_masuks.Qty as masuk_qty',
-        //         'barang_rusaks.Qty as rusak_qty',
-        //         'barang_keluars.Qty as keluar_qty'
-        //     )
-        //     ->get();
-        $result = Barang::all();
+        $result = Barang::join('barang_rusaks', 'barang_rusaks.Kode_Barang', '=', 'barangs.Kode_Barang')
+            ->join('barang_masuks', 'barang_masuks.Kode_Barang', '=', 'barangs.Kode_Barang')
+            ->join('barang_keluars', 'barang_keluars.Kode_Barang', '=', 'barangs.Kode_Barang')
+            ->select(
+                'barangs.Nama_Barang',
+                'barangs.Kode_Barang',
+                'barangs.Kategori',
+                'barangs.Unit',
+                'barangs.Harga_Satuan',
+                'barang_masuks.Qty as masuk_qty',
+                'barang_rusaks.Qty as rusak_qty',
+                'barang_keluars.Qty as keluar_qty'
+            )
+            ->get();
+        // $result = Barang::all();
         // Calculate 'total' based on the quantities
         $result->transform(function ($item) {
             $item->total = $item->masuk_qty - $item->rusak_qty - $item->keluar_qty;

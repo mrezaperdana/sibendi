@@ -297,6 +297,26 @@
                                 </div>
                             </div>
                             <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="required form-label">Harga Satuan</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text" name="Harga_Satuan" id="Harga_Satuan" class="form-control mb-2"
+                                    placeholder="Satuan" value="{{ old('Harga_Satuan') }}">
+                                <!--end::Input-->
+
+                                <!--begin::Description-->
+                                <div class="text-muted fs-7">Harga satuan sebaiknya berisi minimal Rp 1.
+                                </div>
+                                <!--end::Description-->
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                </div>
+                            </div>
+                            <!--end::Input group-->
                             {{-- <!--begin::Input group-->
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
@@ -330,7 +350,13 @@
                             Batal
                         </a>
                         <!--end::Button-->
-
+                    
+                         
+                            <button type="button"
+                            class="btn btn-light btn-flex btn-center btn-active-light-primary"
+                            data-bs-toggle="modal" data-bs-target="#excelModal">
+                            Details <i class="ki-duotone ki-down fs-5 ms-1"></i>
+                        </button>
                         <!--begin::Button-->
                         <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
                             <span class="indicator-label">
@@ -349,4 +375,29 @@
         <!--end::Content container-->
     </div>
     <!--end::Content-->
+
+     <!-- Excel Upload Modal -->
+     <div class="modal fade" id="excelModal" tabindex="-1" role="dialog" aria-labelledby="excelModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="excelModalLabel">Upload Excel File</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Excel Upload Form -->
+                    <form action="{{ route('barangs.excel-store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="file">Choose Excel File:</label>
+                            <input type="file" class="form-control" name="file" id="file" accept=".xlsx, .xls">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop

@@ -1,8 +1,10 @@
 <?php
-
+namespace App\Imports;
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Imports\BarangImport;
+use Excel;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
 
@@ -35,6 +37,19 @@ class BarangController extends Controller
         Barang::create($request->validated());
 
         return redirect()->route('admins.stocks.stok-barang');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeExcel(Request $request)
+    {
+        //
+    
+        
+        Excel::import(new BarangImport(), $request->file('file'));
+
+        return redirect()->route('w');
     }
 
     /**
