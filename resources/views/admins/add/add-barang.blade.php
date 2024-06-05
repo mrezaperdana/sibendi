@@ -1,6 +1,8 @@
 @extends('layouts.main.admins.main')
 
 @section('content-wrapper')
+@include('skipped_items', ['skippedItems' => session('skippedItems', [])])
+
     <!--begin::Toolbar-->
     <div id="kt_app_toolbar" class="app-toolbar pt-5">
         <!--begin::Toolbar container-->
@@ -94,7 +96,7 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admins.add.add-product') }}" class="btn btn-primary">Add Product</a>
+                        <a href="{{ route('admins.barangs.create') }}" class="btn btn-primary">Add Product</a>
                         <!--end::Add product-->
                     </div>
                     <!--end::Card toolbar-->
@@ -115,17 +117,18 @@
                                 </th>
                                 <th class="min-w-200px">Nama Barang</th>
                                 <th class="text-end min-w-100px">Kode Barang</th>
-                                <th class="text-end min-w-70px">No Nota</th>
+                                <th class="text-end min-w-70px">Kategori</th>
                                 <th class="text-end min-w-100px">Satuan</th>
-                                <th class="text-end min-w-100px">Tanggal</th>
                                 <th class="text-end min-w-100px">Harga Satuan</th>
-                                <th class="text-end min-w-100px">Qty</th>
-                                <th class="text-end min-w-100px">Total (Rp)</th>
+                                <th class="text-end min-w-100px">Masuk</th>
+                                <th class="text-end min-w-100px">Keluar</th>
+                                <th class="text-end min-w-100px">Rusak</th>
+                                <th class="text-end min-w-100px">Tersedia</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="fw-semibold text-gray-600">
-                            @foreach ($barangkeluar as $bk)
+                            @foreach ($stokbarang as $sb)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -143,38 +146,42 @@
                                             <div class="ms-5">
                                                 <!--begin::Title-->
                                                 <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold"
-                                                    data-kt-ecommerce-product-filter="product_name">{{ $bk->Nama_Barang }}</a>
+                                                    data-kt-ecommerce-product-filter="product_name">{{ $sb->Nama_Barang }}</a>
                                                 <!--end::Title-->
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> 
                                     <td class="text-end pe-0">
-                                        <span class="fw-bold">{{ $bk->Kode_Barang }}</span>
+                                        <span class="fw-bold">{{ $sb->Kode_Barang }}</span>
                                     </td>
                                     <td class="text-end pe-0" data-order="34">
-                                        <span class="fw-bold ms-3">{{ $bk->No_Nota }}</span>
+                                        <span class="fw-bold ms-3">{{ $sb->Kategori }}</span>
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ $bk->Sat }}
+                                        {{ $sb->Unit }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ \Carbon\Carbon::createFromTimestamp($bk->Tanggal)->formatLocalized('%d %b %Y') }}
+                                        {{ 'Rp ' . number_format($sb->Harga_Satuan, 0, ',', '.') }}
+
+                                    </td>
+
+                                    <td class="text-end pe-0">
+                                        {{ $sb->masuk_qty }}
+                                    </td>
+                                    <td class="text-end pe-0">
+                                        {{ $sb->keluar_qty }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ 'Rp ' . number_format($bk->Harga_Satuan, 0, ',', '.') }}
+                                        {{ $sb->rusak_qty }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ $bk->Qty }}
+                                        {{ $sb->total }}
 
                                     </td>
-                                    <td class="text-end pe-0" data-order="Inactive">
-                                        <!--begin::Badges-->
-                                        <div class="badge badge-light-primary">Barang Keluar</div>
-                                        <!--end::Badges-->
-                                    </td>
+
                                     <td class="text-end">
                                         <a href="#"
                                             class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
@@ -185,7 +192,8 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Edit</a>
+                                                
+                                                <a href="{{ route('pengajuan.edit', 'ID-2114') }}" class="menu-link px-3">Edit</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -212,5 +220,21 @@
 
     </div>
     <!--end::Content-->
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var skippedItems = @json(session('skippedItems', []));
+    
+            console.log(skippedItems); // Log skipped items to console
+    
+            if (skippedItems.length > 0) {
+                $('#skippedItemsModal').modal('show');
+            }
+        });
+    </script>
 @stop
+
+@section('script')
+    <script src="assets/js/pengajuan/products.js"></script>
+@endsection
+

@@ -32,21 +32,21 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Stocks</li>
+                        <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Transaksi</li>
                         <!--end::Item-->
                         <li class="breadcrumb-item">
                             <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n1"></i>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Barang Keluar</li>
+                        <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Barang Rusak</li>
                         <!--end::Item-->
 
                     </ul>
                     <!--end::Breadcrumb-->
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-1 lh-0">
-                        Products</h1>
+                        Barang Rusak</h1>
                     <!--end::Title-->
                 </div>
                 <!--end::Page title-->

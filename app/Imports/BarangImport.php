@@ -24,6 +24,7 @@ class BarangImport implements ToCollection
                 $data['Kategori'] = !empty($row[2]) ? $row[2] : '';
                 $data['Unit'] = !empty($row[3]) ? $row[3] : '';
                 $data['Harga_Satuan'] = !empty($row[4]) ? $row[4] : '';
+                $data['Stok'] = !empty($row[5]) ? $row[5] : '';
 
                 // Use validation to check for duplicate key
                 $validator = \Validator::make($data, [

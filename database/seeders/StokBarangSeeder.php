@@ -19,8 +19,8 @@ class StokBarangSeeder extends Seeder
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
                 StokBarang::create([
-                    "Kode_Barang"   => $data[0],
-                    "Stock"         => $data[1],
+                    "kode_barang"   => $data[0],
+                    "stok"         => $data[1],
                 ]);
             }
             $firstline = false;

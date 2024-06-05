@@ -42,7 +42,7 @@
         var themeMode;
         if (document.documentElement) {
             if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
-                themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+                themeMode = document.documentElement.getAttribute("data-bs-theme-mode");x   
             } else {
                 if (localStorage.getItem("data-bs-theme") !== null) {
                     themeMode = localStorage.getItem("data-bs-theme");

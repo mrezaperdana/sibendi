@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
-            $table->date('Tanggal');
-            $table->string('No_Nota');
-            $table->integer('Kode_Barang');
-            $table->string('Sat');
-            $table->integer('Harga_Satuan');
-            $table->integer('Qty');
+            $table->id();
+            $table->date('tanggal')->comment('Date of outgoing item');
+            $table->string('no_nota')->comment('Note number');
+            $table->unsignedBigInteger('kode_barang')->comment('Item ID');
+            $table->string('satuan')->comment('Unit of measurement');
+            $table->integer('harga_satuan')->comment('Price per unit');
+            $table->integer('qty')->comment('Quantity');
             $table->timestamps();
         });
     }

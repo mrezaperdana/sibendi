@@ -19,12 +19,12 @@ class TransaksiSeeder extends Seeder
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
                 Transaksi::create([
-                    "Tanggal"       => $data[0],
-                    "No_Nota"       => $data[1],
-                    "Penerima"      => $data[2],
-                    "Kode_Barang"   => $data[3],
-                    "Jumlah"   => $data[4],
-                    "Keterangan"    => $data[5],
+                    "tanggal"       => $data[0],
+                    "no_nota"       => $data[1],
+                    "penerima"      => $data[2],
+                    "kode_barang"   => $data[3],
+                    "jumlah"   => $data[4],
+                    "keterangan"    => $data[5],
                 ]);
             }
             $firstline = false;

@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->date('Tanggal');
-            $table->string('No_Nota');
-            $table->string('Penerima');
-            $table->integer('Kode_Barang');
-            $table->integer('Jumlah');
-            $table->string('Keterangan')->nullable();
-            $table->integer('Status')->default(0);
+            $table->date('tanggal')->comment('Transaction date');
+            $table->string('no_nota')->comment('Note number');
+            $table->string('penerima')->comment('Recipient');
+            $table->unsignedBigInteger('kode_barang')->comment('Item ID');
+            $table->integer('jumlah')->comment('Quantity');
+            $table->string('keterangan')->nullable()->comment('Description');
+            $table->integer('status')->default(0)->comment('Transaction status');
             $table->timestamps();
-
-            
         });
     }
 

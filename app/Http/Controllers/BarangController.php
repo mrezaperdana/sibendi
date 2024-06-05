@@ -49,7 +49,7 @@ class BarangController extends Controller
         
         Excel::import(new BarangImport(), $request->file('file'));
 
-        return redirect()->route('w');
+        return redirect()->route('admins.stocks.stok-barang');
     }
 
     /**

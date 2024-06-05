@@ -15075,7 +15075,7 @@ var KTChartsWidget5 = function () {
         
         var options = {
             series: [{
-                data: [15, 12, 10, 8, 7, 4, 3],
+                data: [15, 12, 10, 8, 7, 4, 3,7],
                 show: false                                                                              
             }],
             chart: {
@@ -15099,9 +15099,9 @@ var KTChartsWidget5 = function () {
             legend: {
                 show: false
             },                               
-            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA', '#50CDCD', '#3F4254'],                                                                      
+            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA', '#50CDCD', '#3F4254','#3E97FF'],                                                                      
             xaxis: {
-                categories: ['Phones', 'Laptops', 'Headsets', 'Games', 'Keyboardsy', 'Monitors', 'Speakers'],
+                categories: ['Phones', 'Laptops', 'Headsets', 'Games', 'Keyboardsy', 'Monitors', 'Speakers', 'Bracket'],
                 labels: {
                     formatter: function (val) {
                       return val + "K"
@@ -17297,10 +17297,10 @@ var KTTablesWidget16 = function () {
     // Public methods
     return {
         init: function () {  
-            var chart1Data = [16, 10, 15, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21, 13];  
+            var chart1Data = [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15];  
             initChart(chart1, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_1', chart1Data, true);        
              
-            var chart2Data = [8, 5, 16, 3, 23, 16, 11, 15, 3, 11, 15, 7, 17, 9];  
+            var chart2Data = [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 7, 17, 9];  
             initChart(chart2, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_2', chart2Data, true);    
             
             var chart3Data = [8, 6, 16, 3, 23, 16, 11, 14, 3, 11, 15, 8, 17, 9];  
