@@ -119,7 +119,7 @@
                                     </div>
                                 </th>
                                 <th class="min-w-150px">No_Nota</th>
-                                <th class="text-end min-w-100px">Penerima</th>
+                                <th class="text-end min-w-100px">penerima</th>
                                 <th class="text-end min-w-100px">Tanggal</th>
                                 <th class="text-end min-w-70px">Jumlah Barang</th>
                                 <th class="text-end min-w-70px">Status</th>
@@ -149,9 +149,11 @@
                                             </div>
                                         </div>
                                     </td>
+                                    
+
                                     <td class="text-end pe-0">
 
-                                        {{ $items->first()->Penerima }}
+                                        {{ $items->first()->penerima }}
 
                                     </td>
                                     <td class="text-end pe-0">
@@ -244,19 +246,22 @@
                                                 <tr>
                                                     <th>Kode Barang</th>
                                                     <th>Nama Barang</th>
-                                                    <th>Kategori</th>
+                                                    <th>kategori</th>
                                                     <th>Satuan</th>
-                                                    <th>Jumlah</th>
+                                                    <th>jumlah</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {{-- @php
+                                                dd($items);
+                                            @endphp --}}
                                                 @foreach ($items as $item)
                                                     <tr>
-                                                        <td>{{ $item->Kode_Barang }}</td>
-                                                        <td>{{ $item->barang->Nama_Barang }}</td>
-                                                        <td>{{ $item->barang->Kategori }}</td>
-                                                        <td>{{ $item->barang->Unit }}</td>
-                                                        <td>{{ $item->Jumlah }}</td>
+                                                        <td>{{ $item->kode_barang }}</td>
+                                                        {{-- <td>{{ $item->barang->nama_barang }}</td>
+                                                        <td>{{ $item->barang->kategori }}</td>
+                                                        <td>{{ $item->barang->satuan }}</td> --}}
+                                                        <td>{{ $item->jumlah }}</td>
                                                         <!-- Add other details columns accordingly -->
                                                     </tr>
                                                 @endforeach
@@ -323,7 +328,7 @@
                                                                         <label class="form-label">Kode - Nama
                                                                             Barang:</label>
                                                                         <!--begin::Select2-->
-                                                                        <select name="Kode_Barang" id="Kode_Barang"
+                                                                        <select name="kode_barang" id="kode_barang"
                                                                             aria-label="Select a Country"
                                                                             data-control="selector_barang"
                                                                             data-placeholder="Pilih Barang"
@@ -334,9 +339,9 @@
                                                                             @foreach ($select_barang as $sb)
                                                                                 <option
                                                                                     data-kt-flag="flags/afghanistan.svg"
-                                                                                    value="{{ $sb->Kode_Barang }}">
-                                                                                    {{ $sb->Kode_Barang }}
-                                                                                    - {{ $sb->Nama_Barang }}</option>
+                                                                                    value="{{ $sb->kode_barang }}">
+                                                                                    {{ $sb->kode_barang }}
+                                                                                    - {{ $sb->nama_barang }}</option>
                                                                             @endforeach
                                                                         </select>
 
@@ -344,13 +349,13 @@
                                                                     </div>
 
                                                                     <div class="col-md-3">
-                                                                        <label class="form-label">Jumlah:</label>
-                                                                        <input type="text" name="Jumlah"
-                                                                            id="Jumlah" placeholder="Jumlah"
-                                                                            value="{{ old('Jumlah') }}"
+                                                                        <label class="form-label">jumlah:</label>
+                                                                        <input type="text" name="jumlah"
+                                                                            id="jumlah" placeholder="jumlah"
+                                                                            value="{{ old('jumlah') }}"
                                                                             class="form-control mb-2 mb-md-0"
                                                                             placeholder="Masukkan jumlah pengajuan"
-                                                                            required title="Jumlah tidak boleh kosong!">
+                                                                            required title="jumlah tidak boleh kosong!">
                                                                     </div>
 
                                                                     <div class="col-md-2">

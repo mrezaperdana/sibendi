@@ -9,10 +9,10 @@ class Barang extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'Kode_Barang',
-        'Nama_Barang',
-        'Unit',
-        'Kategori',
-        'Harga_Satuan',
+        'kode_barang',
+        'nama_barang',
+        'satuan',
+        'kategori',
+        'harga_satuan',
     ];
 }
