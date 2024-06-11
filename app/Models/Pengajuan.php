@@ -9,9 +9,9 @@ class Pengajuan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'Kode_Barang',
-        'Jumlah',
-        'No_Nota',
-        'Penerima',
+        'kode_barang',
+        'jumlah',
+        'no_nota',
+        'penerima',
     ];
 }

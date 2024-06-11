@@ -9,12 +9,12 @@ class Transaksi extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'Tanggal',
-        'Kode_Barang',
-        'Jumlah',
-        'No_Nota',
-        'Penerima',
-        'Keterangan',
+        'tanggal',
+        'kode_barang',
+        'jumlah',
+        'no_nota',
+        'penerima',
+        'keterangan',
     ];
 
     // Transaksi.php

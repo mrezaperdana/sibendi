@@ -22,8 +22,9 @@ class AdminPengajuanController extends Controller
 
         // Organize data into a structure based on no_nota
         $groupedPengajuan = $pengajuan->groupBy('no_nota');
-        $select_barang = Barang::select('kode_barang', 'nama_barang', 'kategori', 'Unit')->get();
+        $select_barang = Barang::select('kode_barang', 'nama_barang', 'kategori', 'satuan')->get();
         // dd($groupedPengajuan);
+        // dd($select_barang);
         return view('admins.pengajuans.index', compact('groupedPengajuan', 'select_barang'));
     }
 
