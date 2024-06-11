@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/admin-satuan-barang', function () {
         return view('admins.master-barangs.satuan');
     });
-  
+
     Route::get('/admin-stok-barang', function () {
         return view('admins.master-barangs.stok-barang');
     });
@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/master-barang/satuan-barang', [AdminSatuanController::class, 'index'])->name('admins.satuans');
     // Route::get('/master-barang/stok-barang', [AdminKategoriController::class, 'index'])->name('admins.stoks');
     Route::get('/master-barang/stok-barang', [AdminStockController::class, 'getStokBarang'])->name('admins.master-barangs.stok-barang');
-    
+
     Route::get('/transaksi/barang-keluar', [AdminStockController::class, 'getBarangKeluar'])->name('admins.transaksis.barang-keluar');
     Route::get('/transaksi/barang-rusak', [AdminStockController::class, 'getBarangRusak'])->name('admins.transaksis.barang-rusak');
     Route::get('/transaksi/barang-masuk', [AdminStockController::class, 'getBarangMasuk'])->name('admins.transaksis.barang-masuk');
@@ -85,9 +85,6 @@ Route::group(['prefix' => 'admin',], function () {
     // Route::get('/pengajuan/{totalPriceSum}', [AdminPengajuanController::class, 'setuju'])->name('pengajuan.setuju');
 
     Route::get('/daftar-pengguna', [AdminPenggunaController::class, 'index'])->name('admins.penggunas');
-    Route::get('/pengajuan/{noNota}/verifikasi', [AdminPenggunaController::class, 'edit'])->name('pengajuan.edit');
-    Route::patch('/confirm/{noNota}', [AdminPenggunaController::class, 'confirm'])->name('pengajuan.confirm');
-    Route::patch('/reject/{noNota}', [AdminPenggunaController::class, 'tolak'])->name('pengajuan.tolak');
 });
 
 
