@@ -15,11 +15,12 @@ class Transaksi extends Model
         'no_nota',
         'penerima',
         'keterangan',
+        'status',
     ];
 
     // Transaksi.php
     public function barang()
     {
-        return $this->belongsTo(Barang::class, 'Kode_Barang', 'Kode_Barang');
+        return $this->belongsTo(Barang::class, 'kode_barang', 'kode_barang');
     }
 }

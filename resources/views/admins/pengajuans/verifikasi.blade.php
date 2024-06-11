@@ -39,14 +39,14 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-gray-700 fw-bold lh-1">{{$noNota}}</li>
+                        <li class="breadcrumb-item text-gray-700 fw-bold lh-1">{{ $noNota }}</li>
                         <!--end::Item-->
 
                     </ul>
                     <!--end::Breadcrumb-->
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-1 lh-0">
-                        Kode Pengajuan: {{$noNota}}</h1>
+                        Kode Pengajuan: {{ $noNota }}</h1>
                     <!--end::Title-->
 
                 </div>
@@ -65,8 +65,6 @@
         <div id="kt_app_content_container" class="app-container container-fluid">
             <!--begin::Products-->
             <div class="card card-flush">
-
-
 
                 <!--begin::Card body-->
                 <div class="card-body ">
@@ -102,28 +100,28 @@
                                                 </td>
                                                 <td class="ps-0">
                                                     <a href="#"
-                                                        class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">{{ $d->Nama_Barang }}</a>
+                                                        class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">{{ $d->nama_barang }}</a>
                                                     <span
                                                         class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Kode:
-                                                        {{ $d->Kode_Barang }}</span>
+                                                        {{ $d->kode_barang }}</span>
                                                 </td>
                                                 <td>
                                                     <span
-                                                        class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">{{ $d->Penerima }}</span>
+                                                        class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">{{ $d->penerima }}</span>
                                                 </td>
                                                 <td>
 
                                                     <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">
-                                                        {{ \Carbon\Carbon::parse($d->Tanggal)->formatLocalized('%d %b %Y') }}</span>
+                                                        {{ \Carbon\Carbon::parse($d->tanggal)->formatLocalized('%d %b %Y') }}</span>
                                                 </td>
                                                 <td>
                                                     <span
-                                                        class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">{{ $d->Jumlah }}</span>
+                                                        class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">{{ $d->jumlah }}</span>
                                                 </td>
 
                                                 <td>
                                                     <span
-                                                        class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">{{ $d->Harga_Satuan }}</span>
+                                                        class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">{{ $d->harga_satuan }}</span>
                                                 </td>
                                                 <td>
                                                     <span
@@ -199,8 +197,6 @@
                         </span>
                     </button>
                 </form>
-                
-                
 
                 {{-- <form class="form" method="POST" action="{{ route('pengajuan.setuju'), $totalPriceSum }}"
                     id="kt_modal_add_customer_form">
@@ -217,7 +213,6 @@
                     <!--end::Button-->
                 </form> --}}
             </div>
-
 
         </div>
         <!--end::Content container-->

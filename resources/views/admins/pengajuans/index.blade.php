@@ -89,15 +89,12 @@
                                 data-placeholder="Status" data-kt-ecommerce-product-filter="status">
                                 <option></option>
                                 <option value="all">All</option>
-
                                 <option value="Menunggu Konfirmasi">Menunggu Konfirmasi</option>
                                 <option value="Disetujui">Disetujui</option>
                                 <option value="Ditolak">Ditolak</option>
                             </select>
                             <!--end::Select2-->
                         </div>
-
-
 
                     </div>
                     <!--end::Card toolbar-->
@@ -159,7 +156,7 @@
                                     <td class="text-end pe-0">
                                         {{-- {{ \Carbon\Carbon::createFromTimestamp($items->first()->Tanggal)->formatLocalized('%d %b %Y') }} --}}
                                         {{-- @dd($items) --}}
-                                        {{ \Carbon\Carbon::parse($items->first()->Tanggal)->formatLocalized('%d %b %Y') }}
+                                        {{ \Carbon\Carbon::parse($items->first()->tanggal)->formatLocalized('%d %b %Y') }}
 
                                     </td>
 
@@ -168,7 +165,7 @@
                                     </td>
 
                                     <td class="text-end pe-0">
-                                        @switch($items->first()->Status)
+                                        @switch($items->first()->status)
                                             @case(0)
                                                 <div class="badge badge-light-info">Menunggu Konfirmasi</div>
                                             @break
@@ -194,7 +191,6 @@
                                             Details <i class="ki-duotone ki-down fs-5 ms-1"></i>
                                         </button>
 
-
                                     </td>
                                     <td class="text-end">
                                         <a href="#"
@@ -207,8 +203,8 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('pengajuan.edit', $noNota) }}" 
-                                                    class="menu-link px-3"  data-kt-ecommerce-product-filter="verifikasi_row">Verifikasi</a>
+                                                <a href="{{ route('pengajuan.edit', $noNota) }}" class="menu-link px-3"
+                                                    data-kt-ecommerce-product-filter="verifikasi_row">Verifikasi</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -220,8 +216,6 @@
                                         </div>
                                         <!--end::Menu-->
                                     </td>
-
-
 
                                 </tr>
                             @endforeach
@@ -258,9 +252,15 @@
                                                 @foreach ($items as $item)
                                                     <tr>
                                                         <td>{{ $item->kode_barang }}</td>
+<<<<<<< HEAD
                                                         {{-- <td>{{ $item->barang->nama_barang }}</td>
                                                         <td>{{ $item->barang->kategori }}</td>
                                                         <td>{{ $item->barang->satuan }}</td> --}}
+=======
+                                                        <td>{{ $item->barang->nama_barang }}</td>
+                                                        <td>{{ $item->barang->kategori }}</td>
+                                                        <td>{{ $item->barang->satuan }}</td>
+>>>>>>> 377480e (perbaikan pengajuan data yang tidak tampil)
                                                         <td>{{ $item->jumlah }}</td>
                                                         <!-- Add other details columns accordingly -->
                                                     </tr>
@@ -387,8 +387,6 @@
                                                 </div>
                                                 <!--end::Repeater-->
                                             </div>
-
-
 
                                         </div>
                                         <!--end::Scroll-->
