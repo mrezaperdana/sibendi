@@ -159,7 +159,7 @@
                                     <td class="text-end pe-0">
                                         {{-- {{ \Carbon\Carbon::createFromTimestamp($items->first()->Tanggal)->formatLocalized('%d %b %Y') }} --}}
                                         {{-- @dd($items) --}}
-                                        {{ \Carbon\Carbon::parse($items->first()->Tanggal)->formatLocalized('%d %b %Y') }}
+                                        {{ \Carbon\Carbon::parse($items->first()->tanggal)->formatLocalized('%d %b %Y') }}
 
                                     </td>
 
