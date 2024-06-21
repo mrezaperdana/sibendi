@@ -3,7 +3,6 @@ namespace App\Imports;
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
-use App\Imports\BarangImport;
 use Excel;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
@@ -15,7 +14,17 @@ class BarangController extends Controller
      */
     public function index()
     {
-        //
+
+
+        $result = Barang::join('admin_kategoris', 'admin_kategoris.id', '=', 'barangs.kode_kategori')
+        ->join('admin_satuans', 'admin_satuans.id', '=', 'barangs.kode_satuan')
+        ->select('barangs.kode_barang','barangs.nama_barang', 'admin_kategoris.nama_kategori', 'admin_satuans.nama_satuan', 'barangs.harga_satuan', 'barangs.stok')
+        ->get();
+
+    // Pass the values to the view
+    return view('admins.master-barangs.stok-barang', [
+        'barang' => $result
+    ]);
     }
 
     /**
@@ -47,7 +56,7 @@ class BarangController extends Controller
         //
     
         
-        Excel::import(new BarangImport(), $request->file('file'));
+        // Excel::import(new BarangImport(), $request->file('file'));
 
         return redirect()->route('admins.stocks.stok-barang');
     }

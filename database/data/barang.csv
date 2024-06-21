@@ -1,4 +1,4 @@
-﻿Kode_Barang,Nama_Barang,Kategori,Unit,Harga_Satuan
-100001,Pensil 2B,Alat Tulis,Buah,2000
-100006,Stabilo Boss,Alat Tulis,Buah,4500
-100009,Spidol White Board,Alat Tulis,Buah,7000
+﻿kode_barang,nama_barang,kode_satuan,kode_kategori,harga_satuan,stok
+100001,Pensil 2B,1,1,2000,3
+100006,Kertas HVS,1,2,5000,12
+100009,Isi Steples,2,1,10000,300
