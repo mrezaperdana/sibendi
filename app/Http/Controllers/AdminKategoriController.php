@@ -12,8 +12,13 @@ class AdminKategoriController extends Controller
      */
     public function index()
     {
-       //
-        return view('admins.master-barangs.kategori');
+
+        $result = AdminKategori::select( 'id','nama_kategori', 'keterangan',)
+            ->get();
+        // Pass the values to the view
+        return view('admins.master-barangs.kategori.index', [
+            'kategori' => $result
+        ]);
     }
 
     /**

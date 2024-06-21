@@ -56,6 +56,9 @@ Route::group(['prefix' => 'admin',], function () {
     });
 
     Route::get('/master-barang/kategori-barang', [AdminKategoriController::class, 'index'])->name('admins.kategoris');
+    Route::get('/master-barang/kategori-barang/{id}/edit', [AdminKategoriController::class, 'update'])->name('kategori.edit');
+
+
     Route::get('/master-barang/satuan-barang', [AdminSatuanController::class, 'index'])->name('admins.satuans');
     // Route::get('/master-barang/stok-barang', [AdminKategoriController::class, 'index'])->name('admins.stoks');
     Route::get('/master-barang/stok-barang', [AdminStockController::class, 'getStokBarang'])->name('admins.master-barangs.stok-barang');
