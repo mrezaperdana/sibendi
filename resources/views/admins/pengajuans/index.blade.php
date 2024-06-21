@@ -240,21 +240,20 @@
                                                 <tr>
                                                     <th>Kode Barang</th>
                                                     <th>Nama Barang</th>
-                                                    <th>kategori</th>
+                                                    <th>Kategori</th>
                                                     <th>Satuan</th>
                                                     <th>jumlah</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- @php
-                                                dd($items);
-                                            @endphp --}}
+                                                {{-- @dd($items) --}}
                                                 @foreach ($items as $item)
+                                                {{-- @dd($item) --}}
                                                     <tr>
-                                                        <td>{{ $item->kode_barang }}</td>
+                                                        <td>{{ $item->barang->kode_barang }}</td>
                                                         <td>{{ $item->barang->nama_barang }}</td>
-                                                        <td>{{ $item->barang->kategori }}</td>
-                                                        <td>{{ $item->barang->satuan }}</td>
+                                                        <td>{{ $item->barang->nama_kategori }}</td>
+                                                        <td>{{ $item->barang->nama_satuan }}</td>
                                                         <td>{{ $item->jumlah }}</td>
                                                         <!-- Add other details columns accordingly -->
                                                     </tr>
