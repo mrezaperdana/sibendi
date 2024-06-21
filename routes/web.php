@@ -63,9 +63,17 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/master-barang/satuan-barang/{id}/edit', [AdminSatuanController::class, 'update'])->name('satuan.edit');
 
 
+    
+    Route::get('/master-barang/stok-barang', [BarangController::class, 'index'])->name('admins.master-barangs.stok-barang');
+    Route::get('/barangs/create', [BarangController::class, 'create'])->name('admins.barangs.create');
+    Route::post('/barangs', [BarangController::class, 'store'])->name('barangs.store');
+    Route::post('/barangs-excel', [BarangController::class, 'storeExcel'])->name('barangs.excel-store');
+    Route::get('/barangs/{barang}/edit', [BarangController::class, 'edit'])->name('barangs.edit');
+    Route::patch('/barangs/{barang}', [BarangController::class, 'update'])->name('barangs.update');
+    Route::delete('/barangs/{barang}', [BarangController::class, 'destroy'])->name('barangs.destroy');
+
 
     // Route::get('/master-barang/stok-barang', [AdminKategoriController::class, 'index'])->name('admins.stoks');
-    Route::get('/master-barang/stok-barang', [AdminStockController::class, 'getStokBarang'])->name('admins.master-barangs.stok-barang');
 
     Route::get('/transaksi/barang-keluar', [AdminStockController::class, 'getBarangKeluar'])->name('admins.transaksis.barang-keluar');
     Route::get('/transaksi/barang-rusak', [AdminStockController::class, 'getBarangRusak'])->name('admins.transaksis.barang-rusak');
@@ -77,13 +85,6 @@ Route::group(['prefix' => 'admin',], function () {
     Route::resource('stocks', AdminStockController::class);
 
 
-    Route::get('/barangs', [BarangController::class, 'index'])->name('barangs.index');
-    Route::get('/barangs/create', [BarangController::class, 'create'])->name('admins.barangs.create');
-    Route::post('/barangs', [BarangController::class, 'store'])->name('barangs.store');
-    Route::post('/barangs-excel', [BarangController::class, 'storeExcel'])->name('barangs.excel-store');
-    Route::get('/barangs/{barang}/edit', [BarangController::class, 'edit'])->name('barangs.edit');
-    Route::patch('/barangs/{barang}', [BarangController::class, 'update'])->name('barangs.update');
-    Route::delete('/barangs/{barang}', [BarangController::class, 'destroy'])->name('barangs.destroy');
 
     Route::get('/pengajuan/daftar-pengajuan', [AdminPengajuanController::class, 'index'])->name('admins.pengajuans');
     Route::get('/pengajuan/{noNota}/verifikasi', [AdminPengajuanController::class, 'edit'])->name('pengajuan.edit');

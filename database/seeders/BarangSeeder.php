@@ -22,12 +22,14 @@ class BarangSeeder extends Seeder
          $firstline = true;
          while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
              if (!$firstline) {
+                
                  Barang::create([
                     "kode_barang"   => $data[0],
                     "nama_barang"   => $data[1],
-                    "kategori"      => $data[2],
-                    "satuan"          => $data[3],
+                    "kode_satuan"          => $data[2],
+                    "kode_kategori"      => $data[3],
                     "harga_satuan"  => $data[4],
+                    "stok"  => $data[5],
                  ]);
              }
              $firstline = false;
