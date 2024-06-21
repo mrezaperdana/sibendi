@@ -346,5 +346,5 @@
     </td>
 @endsection
 @section('script')
-    <script src="assets/js/kategori/admin/products.js"></script>
+    <script src="assets/js/admin/kategori/products.js"></script>
 @endsection

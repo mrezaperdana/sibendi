@@ -11,6 +11,7 @@ use Database\Seeders\BarangSeeder;
 use Database\Seeders\StokBarangSeeder;
 use Database\Seeders\TransaksiSeeder;
 use Database\Seeders\KategoriSeeder;
+use Database\Seeders\SatuanSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StokBarangSeeder::class);
         $this->call(TransaksiSeeder::class);
         $this->call(KategoriSeeder::class);
+        $this->call(SatuanSeeder::class);
     }
 }
