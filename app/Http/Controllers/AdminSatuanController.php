@@ -13,7 +13,7 @@ class AdminSatuanController extends Controller
     public function index()
     {
         //
-        return view('admins.master-barangs.satuan');
+        return view('admins.master-barangs.satuan.index');
     }
 
     /**

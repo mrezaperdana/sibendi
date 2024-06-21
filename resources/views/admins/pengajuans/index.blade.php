@@ -252,15 +252,9 @@
                                                 @foreach ($items as $item)
                                                     <tr>
                                                         <td>{{ $item->kode_barang }}</td>
-<<<<<<< HEAD
-                                                        {{-- <td>{{ $item->barang->nama_barang }}</td>
-                                                        <td>{{ $item->barang->kategori }}</td>
-                                                        <td>{{ $item->barang->satuan }}</td> --}}
-=======
                                                         <td>{{ $item->barang->nama_barang }}</td>
                                                         <td>{{ $item->barang->kategori }}</td>
                                                         <td>{{ $item->barang->satuan }}</td>
->>>>>>> 377480e (perbaikan pengajuan data yang tidak tampil)
                                                         <td>{{ $item->jumlah }}</td>
                                                         <!-- Add other details columns accordingly -->
                                                     </tr>
