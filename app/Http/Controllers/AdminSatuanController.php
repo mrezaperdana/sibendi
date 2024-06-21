@@ -13,7 +13,12 @@ class AdminSatuanController extends Controller
     public function index()
     {
         //
-        return view('admins.master-barangs.satuan.index');
+        $result = AdminSatuan::select( 'id','nama_satuan', 'keterangan',)
+            ->get();
+        // Pass the values to the view
+        return view('admins.master-barangs.satuan.index', [
+            'satuan' => $result
+        ]);
     }
 
     /**

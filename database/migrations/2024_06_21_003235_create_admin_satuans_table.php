@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('satuans', function (Blueprint $table) {
+        Schema::create('admin_satuans', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_satuan')->unique()->comment('the ID of the satuan');
             $table->string('nama_satuan')->index()->comment('Name of the satuan');
             $table->text('keterangan')->nullable()->comment('Description of the satuan');
             $table->timestamps();
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('satuans');
+        Schema::dropIfExists('admin_satuans');
     }
 };
