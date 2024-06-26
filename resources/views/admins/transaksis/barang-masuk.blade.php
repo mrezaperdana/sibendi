@@ -143,31 +143,31 @@
                                             <div class="ms-5">
                                                 <!--begin::Title-->
                                                 <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold"
-                                                    data-kt-ecommerce-product-filter="product_name">{{ $bm->Nama_Barang }}</a>
-                                                <!--end::Title-->
+                                                    data-kt-ecommerce-product-filter="product_name">{{ $bm->nama_barang }}</a>
+                                                <!--end::title-->
                                             </div>
                                         </div>
                                     </td>
                                     <td class="text-end pe-0">
-                                        <span class="fw-bold">{{ $bm->Kode_Barang }}</span>
+                                        <span class="fw-bold">{{ $bm->kode_barang }}</span>
                                     </td>
                                     <td class="text-end pe-0" data-order="34">
-                                        <span class="fw-bold ms-3">{{ $bm->No_Nota }}</span>
+                                        <span class="fw-bold ms-3">{{ $bm->no_nota }}</span>
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ $bm->Sat }}
+                                        {{ $bm->satuan }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ \Carbon\Carbon::createFromTimestamp($bm->Tanggal)->formatLocalized('%d %b %Y') }}
+                                        {{ \carbon\carbon::createfromtimestamp($bm->tanggal)->formatlocalized('%d %b %y') }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ 'Rp ' . number_format($bm->Harga_Satuan, 0, ',', '.') }}
+                                        {{ 'rp ' . number_format($bm->harga_satuan, 0, ',', '.') }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ $bm->Qty }}
+                                        {{ $bm->qty }}
 
                                     </td>
                                     <td class="text-end pe-0" data-order="Inactive">

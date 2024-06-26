@@ -25,9 +25,9 @@ class AdminStockController extends Controller
     public function getBarangMasuk()
     {
         $result = BarangMasuk::join('barangs', 'barang_masuks.kode_barang', '=', 'barangs.kode_barang')
-            ->select('barangs.Nama_Barang', 'barang_masuks.tanggal', 'barang_masuks.no_nota', 'barang_masuks.kode_barang', 'barang_masuks.satuan', 'barang_masuks.harga_satuan', 'barang_masuks.qty')
+            ->select('barangs.nama_barang', 'barang_masuks.tanggal', 'barang_masuks.no_nota', 'barang_masuks.kode_barang', 'barang_masuks.satuan', 'barang_masuks.harga_satuan', 'barang_masuks.qty')
             ->get();
-        // Pass the values to the view
+        // pass the values to the view
         return view('admins.transaksis.barang-masuk', [
             'barangmasuk' => $result
         ]);
@@ -35,7 +35,7 @@ class AdminStockController extends Controller
     public function getBarangKeluar()
     {
         $result = BarangKeluar::join('barangs', 'barang_keluars.kode_barang', '=', 'barangs.kode_barang')
-            ->select('barangs.Nama_Barang', 'barang_keluars.tanggal', 'barang_keluars.no_nota', 'barang_keluars.kode_barang', 'barang_keluars.satuan', 'barang_keluars.harga_satuan', 'barang_keluars.qty')
+            ->select('barangs.nama_barang', 'barang_keluars.tanggal', 'barang_keluars.no_nota', 'barang_keluars.kode_barang', 'barang_keluars.satuan', 'barang_keluars.harga_satuan', 'barang_keluars.qty')
             ->get();
 
         // Pass the values to the view
@@ -46,9 +46,9 @@ class AdminStockController extends Controller
     public function getBarangRusak()
     {
         $result = BarangRusak::join('barangs', 'barang_rusaks.kode_barang', '=', 'barangs.kode_barang')
-            ->select('barangs.Nama_Barang', 'barang_rusaks.tanggal', 'barang_rusaks.no_nota', 'barang_rusaks.kode_barang', 'barang_rusaks.satuan', 'barang_rusaks.harga_satuan', 'barang_rusaks.qty')
+            ->select('barangs.nama_barang', 'barang_rusaks.tanggal', 'barang_rusaks.no_nota', 'barang_rusaks.kode_barang', 'barang_rusaks.satuan', 'barang_rusaks.harga_satuan', 'barang_rusaks.qty')
             ->get();
-        // Pass the values to the view
+        // pass the values to the view
         return view('admins.transaksis.barang-rusak', [
             'barangrusak' => $result
         ]);
