@@ -119,7 +119,61 @@
 
                         </thead>
                         <tbody class="fw-semibold text-gray-600">
+                         
+                            @foreach ($pengguna as $item)
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                            <input class="form-check-input" type="checkbox" value="1" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="ms-5">
+                                                <!--begin::Title-->
+                                                <a href="" class="text-gray-800 text-hover-primary800 fs-5 fw-bold"
+                                                    data-kt-ecommerce-product-filter="product_name">{{ $item->name }}</a>
+                                                <!--end::Title-->
+                                            </div>
+                                        </div>
+                                    </td>
+                                    
+                                    <td class="text-end pe-0">
 
+                                        {{ $item->username }}
+
+                                    </td>
+                                    <td class="text-end pe-0">
+
+                                        {{ $item->role }}
+
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#"
+                                            class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
+                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                            <i class="ki-duotone ki-down fs-5 ms-1"></i>
+                                        </a>
+                                        <!--begin::Menu-->
+                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
+                                            data-kt-menu="true">
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('kategori.edit', ['id' => $item->id]) }}"
+                                                    class="menu-link px-3">Verifikasi</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="#" class="menu-link px-3"
+                                                    data-kt-ecommerce-product-filter="delete_row">Delete</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                        </div>
+                                        <!--end::Menu-->
+                                    </td>
+                                </tr>
+                            @endforeach
                          
                         </tbody>
                     </table>
@@ -292,5 +346,5 @@
     </td>
 @endsection
 @section('script')
-    <script src="assets/js/pengajuan/admin/products.js"></script>
+    <script src="assets/js/admin/pengguna/index.js"></script>
 @endsection

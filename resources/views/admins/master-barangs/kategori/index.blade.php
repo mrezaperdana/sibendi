@@ -160,7 +160,7 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('kategori.edit', ['id' => $item->id]) }}"
+                                                <a href="{{ route('kategori.edit', ['id' => $item->kode_kategori]) }}"
                                                     class="menu-link px-3">Verifikasi</a>
                                             </div>
                                             <!--end::Menu item-->

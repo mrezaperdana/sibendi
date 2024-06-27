@@ -94,7 +94,7 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admins.add.add-product') }}" class="btn btn-primary">Add Product</a>
+                        <a href="{{ route('admins.add.add-product') }}" class="btn btn-primary">Tambah</a>
                         <!--end::Add product-->
                     </div>
                     <!--end::Card toolbar-->

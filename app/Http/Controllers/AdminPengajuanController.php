@@ -17,22 +17,22 @@ class AdminPengajuanController extends Controller
     {
         // Fetch unique no_nota values with associated kode_barang, tanggal, and joined kategori name
         $pengajuan = Transaksi::with(['barang' => function ($query) {
-            $query->join('admin_kategoris', 'admin_kategoris.id', '=', 'barangs.kode_kategori')
-          ->join('admin_satuans', 'admin_satuans.id', '=', 'barangs.kode_satuan')
+            $query->join('admin_kategoris', 'admin_kategoris.kode_kategori', '=', 'barangs.kode_kategori')
+          ->join('admin_satuans', 'admin_satuans.kode_satuan', '=', 'barangs.kode_satuan')
                 ->select('barangs.*', 'admin_kategoris.nama_kategori','admin_satuans.nama_satuan');
         }])
             ->select('no_nota', 'penerima', 'status', 'tanggal','jumlah', DB::raw('GROUP_CONCAT(barangs.kode_barang) as kode_barang'), DB::raw('GROUP_CONCAT(admin_kategoris.nama_kategori) as nama_kategori'), DB::raw('GROUP_CONCAT(admin_satuans.nama_satuan) as nama_satuan'))
             ->join('barangs', 'transaksis.kode_barang', '=', 'barangs.kode_barang')
-            ->join('admin_kategoris', 'barangs.kode_kategori', '=', 'admin_kategoris.id')
-            ->join('admin_satuans', 'barangs.kode_satuan', '=', 'admin_satuans.id')
+            ->join('admin_kategoris', 'barangs.kode_kategori', '=', 'admin_kategoris.kode_kategori')
+            ->join('admin_satuans', 'barangs.kode_satuan', '=', 'admin_satuans.kode_satuan')
             ->groupBy('no_nota', 'penerima', 'status', 'tanggal','jumlah')
             ->get();
 
         // Organize data into a structure based on no_nota
         $groupedPengajuan = $pengajuan->groupBy('no_nota');
         $select_barang =
-            Barang::join('admin_kategoris', 'admin_kategoris.id', '=', 'barangs.kode_kategori')
-            ->join('admin_satuans', 'admin_satuans.id', '=', 'barangs.kode_satuan')
+            Barang::join('admin_kategoris', 'admin_kategoris.kode_kategori', '=', 'barangs.kode_kategori')
+            ->join('admin_satuans', 'admin_satuans.kode_satuan', '=', 'barangs.kode_satuan')
             ->select('barangs.kode_barang', 'barangs.nama_barang', 'admin_kategoris.nama_kategori', 'admin_satuans.nama_satuan')
             ->get();
         // dd($groupedPengajuan);

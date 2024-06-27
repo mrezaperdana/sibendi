@@ -9,7 +9,7 @@ use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\AdminPengajuanController;
-use App\Http\Controllers\AdminPenggunaController;
+use App\Http\Controllers\AdminUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,6 +78,12 @@ Route::group(['prefix' => 'admin',], function () {
     Route::get('/transaksi/barang-keluar', [AdminStockController::class, 'getBarangKeluar'])->name('admins.transaksis.barang-keluar');
     Route::get('/transaksi/barang-rusak', [AdminStockController::class, 'getBarangRusak'])->name('admins.transaksis.barang-rusak');
     Route::get('/transaksi/barang-masuk', [AdminStockController::class, 'getBarangMasuk'])->name('admins.transaksis.barang-masuk');
+    
+    
+    Route::get('/daftar-pengguna', [AdminUserController::class, 'index'])->name('admins.penggunas.index');
+
+
+
     // Route::get('tambah-barang', [AdminStockController::class, 'getTambahBarang'])->name('admins.stocks.tambah-barang');
     Route::get('add-product', [AdminStockController::class, 'addProduct'])->name('admins.add.add-product');
     Route::post('post-product', [AdminStockController::class, 'postProduct'])->name('admins.post.post-product');
@@ -92,7 +98,6 @@ Route::group(['prefix' => 'admin',], function () {
     Route::patch('/reject/{noNota}', [AdminPengajuanController::class, 'tolak'])->name('pengajuan.tolak');
     // Route::get('/pengajuan/{totalPriceSum}', [AdminPengajuanController::class, 'setuju'])->name('pengajuan.setuju');
 
-    Route::get('/daftar-pengguna', [AdminPenggunaController::class, 'index'])->name('admins.penggunas');
 });
 
 

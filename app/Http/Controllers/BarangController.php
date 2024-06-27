@@ -16,8 +16,8 @@ class BarangController extends Controller
     {
 
 
-        $result = Barang::join('admin_kategoris', 'admin_kategoris.id', '=', 'barangs.kode_kategori')
-        ->join('admin_satuans', 'admin_satuans.id', '=', 'barangs.kode_satuan')
+        $result = Barang::join('admin_kategoris', 'admin_kategoris.kode_kategori', '=', 'barangs.kode_kategori')
+        ->join('admin_satuans', 'admin_satuans.kode_satuan', '=', 'barangs.kode_satuan')
         ->select('barangs.kode_barang','barangs.nama_barang', 'admin_kategoris.nama_kategori', 'admin_satuans.nama_satuan', 'barangs.harga_satuan', 'barangs.stok')
         ->get();
 
