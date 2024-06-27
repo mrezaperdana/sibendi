@@ -151,7 +151,7 @@
              <!--end:Menu item-->
              <!--begin::Menu item-->
              <div class="menu-item">
-                 <a href="{{ route('admins.penggunas') }}" class="menu-link">
+                 <a href="{{ route('admins.penggunas.index') }}" class="menu-link {{ request()->is('admin/daftar-pengguna*') ? 'active' : '' }}">
                      <span class="menu-icon">
                          <i class="ki-duotone ki-profile-user fs-1"><span class="path1"></span><span
                                  class="path2"></span><span class="path3"></span><span class="path4"></span></i>

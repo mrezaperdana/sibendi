@@ -13,7 +13,7 @@ class AdminKategoriController extends Controller
     public function index()
     {
 
-        $result = AdminKategori::select( 'id','nama_kategori', 'keterangan',)
+        $result = AdminKategori::select( 'kode_kategori','nama_kategori', 'keterangan',)
             ->get();
         // Pass the values to the view
         return view('admins.master-barangs.kategori.index', [

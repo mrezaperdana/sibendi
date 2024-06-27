@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdminSatuan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminSatuanController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-        $result = AdminSatuan::select( 'kode_satuan','nama_satuan', 'keterangan',)
+        $result = User::select( 'id','name', 'username','role')
             ->get();
-        // Pass the values to the view
-        return view('admins.master-barangs.satuan.index', [
-            'satuan' => $result
-        ]);
+    // pass the values to the view
+    return view('admins.penggunas.index', [
+        'pengguna' => $result
+    ]);
     }
 
     /**
@@ -40,7 +39,7 @@ class AdminSatuanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AdminSatuan $adminSatuan)
+    public function show(User $User)
     {
         //
     }
@@ -48,7 +47,7 @@ class AdminSatuanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AdminSatuan $adminSatuan)
+    public function edit(User $User)
     {
         //
     }
@@ -56,7 +55,7 @@ class AdminSatuanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AdminSatuan $adminSatuan)
+    public function update(Request $request, User $User)
     {
         //
     }
@@ -64,7 +63,7 @@ class AdminSatuanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AdminSatuan $adminSatuan)
+    public function destroy(User $User)
     {
         //
     }
