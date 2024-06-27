@@ -125,7 +125,9 @@
                             </tr>
                         </thead>
                         <tbody class="fw-semibold text-gray-600">
+                            
                             @foreach ($barangkeluar as $bk)
+                            
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -143,31 +145,31 @@
                                             <div class="ms-5">
                                                 <!--begin::Title-->
                                                 <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold"
-                                                    data-kt-ecommerce-product-filter="product_name">{{ $bk->Nama_Barang }}</a>
+                                                    data-kt-ecommerce-product-filter="product_name">{{ $bk->nama_barang }}</a>
                                                 <!--end::Title-->
                                             </div>
                                         </div>
                                     </td>
                                     <td class="text-end pe-0">
-                                        <span class="fw-bold">{{ $bk->Kode_Barang }}</span>
+                                        <span class="fw-bold">{{ $bk->kode_barang }}</span>
                                     </td>
                                     <td class="text-end pe-0" data-order="34">
-                                        <span class="fw-bold ms-3">{{ $bk->No_Nota }}</span>
+                                        <span class="fw-bold ms-3">{{ $bk->no_nota }}</span>
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ $bk->Sat }}
+                                        {{ $bk->satuan }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ \Carbon\Carbon::createFromTimestamp($bk->Tanggal)->formatLocalized('%d %b %Y') }}
+                                        {{ \Carbon\Carbon::createFromTimestamp($bk->tanggal)->formatLocalized('%d %b %Y') }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ 'Rp ' . number_format($bk->Harga_Satuan, 0, ',', '.') }}
+                                        {{ 'Rp ' . number_format($bk->harga_satuan, 0, ',', '.') }}
 
                                     </td>
                                     <td class="text-end pe-0">
-                                        {{ $bk->Qty }}
+                                        {{ $bk->qty }}
 
                                     </td>
                                     <td class="text-end pe-0" data-order="Inactive">
