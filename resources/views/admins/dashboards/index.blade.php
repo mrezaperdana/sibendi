@@ -64,48 +64,49 @@
                     <!--begin::Lists Widget 19-->
                     <div class="card card-flush h-xl-100">
                         <!--begin::Hero-->
-											<div class="position-relative mb-17">
-												<!--begin::Overlay-->
-												<div class="overlay overlay-show">
-													<!--begin::Image-->
-													<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-250px" style="background-image:url('assets/media/svg/shapes/top-green.png')"></div>
-													<!--end::Image-->
-													<!--begin::layer-->
-													<div class="overlay-layer rounded bg-black" style="opacity: 0.4"></div>
-													<!--end::layer-->
-												</div>
-												<!--end::Overlay-->
-												<!--begin::Heading-->
-												<div class="position-absolute text-white mb-8 ms-10 bottom-0">
-													<!--begin::Title-->
-													<h3 class="text-white fs-2qx fw-bold mb-3 m">Halo, M Reza Perdana</h3>
-													<!--end::Title-->
-													<!--begin::Text-->
-													<div class="fs-4 text-grey-400">
-                                                        <span class="opacity-75">You have</span>
-                    
-                                                        <span class="position-relative d-inline-block">
-                                                            <a href="/saul-html-pro/pages/user-profile/projects.html"
-                                                                class="link-white opacity-75-hover fw-bold d-block mb-1">4 tasks</a>
-                    
-                                                            <!--begin::Separator-->
-                                                            <span
-                                                                class="position-absolute opacity-50 bottom-0 start-0 border-2 border-body border-bottom w-100"></span>
-                                                            <!--end::Separator-->
-                                                        </span>
-                    
-                                                        <span class="opacity-75">to complete</span>
-                                                    </div>
-													<!--end::Text-->
-												</div>
-												<!--end::Heading-->
-											</div>
-											<!--end::-->
-                       
+                        <div class="position-relative mb-17">
+                            <!--begin::Overlay-->
+                            <div class="overlay overlay-show">
+                                <!--begin::Image-->
+                                <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-250px"
+                                    style="background-image:url('assets/media/svg/shapes/top-green.png')"></div>
+                                <!--end::Image-->
+                                <!--begin::layer-->
+                                <div class="overlay-layer rounded bg-black" style="opacity: 0.4"></div>
+                                <!--end::layer-->
+                            </div>
+                            <!--end::Overlay-->
+                            <!--begin::Heading-->
+                            <div class="position-absolute text-white mb-8 ms-10 bottom-0">
+                                <!--begin::Title-->
+                                <h3 class="text-white fs-2qx fw-bold mb-3 m">Halo, {{Auth::user()->name}}</h3>
+                                <!--end::Title-->
+                                <!--begin::Text-->
+                                <div class="fs-4 text-grey-400">
+                                    <span class="opacity-75">You have</span>
+
+                                    <span class="position-relative d-inline-block">
+                                        <a href="/saul-html-pro/pages/user-profile/projects.html"
+                                            class="link-white opacity-75-hover fw-bold d-block mb-1">4 tasks</a>
+
+                                        <!--begin::Separator-->
+                                        <span
+                                            class="position-absolute opacity-50 bottom-0 start-0 border-2 border-body border-bottom w-100"></span>
+                                        <!--end::Separator-->
+                                    </span>
+
+                                    <span class="opacity-75">to complete</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Heading-->
+                        </div>
+                        <!--end::-->
+
 
                         <!--begin::Body-->
                         <div class="card-body pt-6">
-                            
+
                             <!--begin::Stats-->
                             <div class="mt-n20 position-relative">
                                 <!--begin::Row-->
@@ -228,8 +229,8 @@
                                         <!--end::Items-->
                                     </div>
                                     <!--end::Col-->
-                                    
-                                   
+
+
                                 </div>
                                 <!--end::Row-->
                             </div>
@@ -261,8 +262,7 @@
                             <!--begin::Toolbar-->
                             <div class="card-toolbar">
                                 <!--begin::Menu-->
-                                <button
-                                    class="btn btn-icon btn-color-gray-400 btn-active-color-primary justify-content-end"
+                                <button class="btn btn-icon btn-color-gray-400 btn-active-color-primary justify-content-end"
                                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                     data-kt-menu-overflow="true">
                                     <i class="ki-duotone ki-dots-square fs-1 text-gray-400 me-n1">

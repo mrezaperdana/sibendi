@@ -23,23 +23,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('admins/dashboards.index');
-});
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('/barang-masuk', function () {
-    return view('admins.stocks.status-barang');
-});
-Route::get('/stok-barang', function () {
-    return view('admins.stocks.stok-barang');
+    return redirect('/login');
 });
 
-Route::get('login', [LoginController::class, 'index'])->name('site.login');
-Route::get('send', [PengajuanController::class, 'sendNotification']);
+Route::middleware('guest')->get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::middleware('guest')->post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('site.logout');
 
-Route::group(['prefix' => 'admin',], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi','PreventBackHistory']], function () {
 
     Route::post('admins.stocks.status-barang', [AdminController::class, 'changePassword'])->name('AdminChangePassword');
     Route::post('admins.stocks.stok-barang', [AdminController::class, 'index'])->name('AdminChangePassword');
@@ -102,7 +95,7 @@ Route::group(['prefix' => 'admin',], function () {
 
 
 
-Route::group(['prefix' => 'user',], function () {
+Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
     Route::post('admins.stocks.status-barang', [AdminController::class, 'changePassword'])->name('AdminChangePassword');
     Route::post('admins.stocks.stok-barang', [AdminController::class, 'index'])->name('AdminChangePassword');
