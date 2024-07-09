@@ -1,4 +1,4 @@
-id,name,username,email,nohp,picture,role,password,remember_token,email_verified_at,created_at,updated_at
-1,M Reza Perdana,admin,admin@gmail.com,,,1,001,$2y$10$HJrMp.r9WKDoYNFIn738c.mFYNaSslfFj3arjJ8A/4f/whYa3N5BG,,,,
+id,name,username,email,nohp,picture,role,password,IsAdminSibendi,remember_token,email_verified_at,created_at,updated_at
+1,M Reza Perdana,admin,admin@gmail.com,,,1,001,$2y$10$HJrMp.r9WKDoYNFIn738c.mFYNaSslfFj3arjJ8A/4f/whYa3N5BG,1,,,
 2,Elkanah Namasuro,default,Elkanah@gmail.com,,,2,002,$2y$10$WQxzCMzLUzZdQQlxasD3jusMPuz7w3cYjVpOeDaSn4jy6vWGIwjya,,,,
 3,user1,user1,user1@gmail.com,,,2,001,$2y$10$WQxzCMzLUzZdQQlxasD3jusMPuz7w3cYjVpOeDaSn4jy6vWGIwjya,,,,

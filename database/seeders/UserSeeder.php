@@ -23,17 +23,18 @@ class UserSeeder extends Seeder
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
                 User::create([
-                    "id"                => $data['0'],
-                    "name"              => $data['1'],
-                    "username"          => $data['2'],
-                    "email"             => $data['3'],
-                    "nohp"              => $data['4'],
-                    "picture"           => $data['5'],
-                    "role"              => $data['6'],
-                    "kodeinstansi"      => $data['7'],
-                    "password"          => $data['8'],
-                    "remember_token"    => $data['9'],
-                    "email_verified_at" => $data['10']
+                    'id' => $data[0],
+                    'name' => $data[1],
+                    'username' => $data[2],
+                    'email' => $data[3],
+                    'nohp' => $data[4] ?: null, // Handle nullable fields
+                    'picture' => $data[5] ?: null,
+                    'role' => $data[6],
+                    'kodeinstansi' => $data[7] ?: null,
+                    'password' => $data[8],
+                    'IsAdminSibendi' => $data[9] ?: null,
+                    'remember_token' => $data[10] ?: null,
+                    'email_verified_at' => $data[11] ?: null,
                 ]);
             }
             $firstline = false;

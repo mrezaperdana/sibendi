@@ -21,8 +21,9 @@ return new class extends Migration
             $table->boolean('role')->nullable();
             $table->string('kodeinstansi')->nullable();
             $table->string('password');
+            $table->string('IsAdminSibendi')->nullable();
             $table->rememberToken();
-            $table->string('email_verified_at')->default('NULL');
+            $table->string('email_verified_at')->nullable();
             $table->timestamps();
         });
     }
