@@ -100,6 +100,7 @@
                 <div class="card-body pt-0">
 
                     <!--begin::Table-->
+                    <div class="table-responsive">
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
 
                         <thead>
@@ -177,6 +178,7 @@
                          
                         </tbody>
                     </table>
+                    </div>
                     <!--end::Table-->
                     <!--begin::Modal - Detail Barang-->
                  

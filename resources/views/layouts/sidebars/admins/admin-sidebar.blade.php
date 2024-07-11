@@ -54,7 +54,7 @@
                      <!--begin:Menu item-->
                      <div class="menu-item">
                          <!--begin:Menu link-->
-                         <a class="menu-link {{ request()->is('admin/master-barang/satuan*') ? 'active' : '' }}" href="{{ route('admins.satuans') }}">
+                         <a class="menu-link {{ request()->is('admin/master-barang/satuan*') ? 'active' : '' }}" href="{{ route('admin.satuan.index') }}">
                              <span class="menu-bullet">
                                  <span class="bullet bullet-dot"></span>
                              </span>
