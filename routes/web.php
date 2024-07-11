@@ -52,10 +52,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi'
     Route::get('/master-barang/kategori-barang/{id}/edit', [AdminKategoriController::class, 'update'])->name('kategori.edit');
     
     
-    Route::get('/master-barang/satuan-barang', [AdminSatuanController::class, 'index'])->name('admins.satuans');
-    Route::get('/master-barang/satuan-barang/{id}/edit', [AdminSatuanController::class, 'update'])->name('satuan.edit');
 
 
+    Route::resource('master-barang/satuan-barang', AdminSatuanController::class)->parameters([
+        'satuan-barang' => 'kode_satuan',
+    ])->names([
+        'index' => 'admin.satuan.index',
+        'create' => 'admin.satuan.create',
+        'store' => 'admin.satuan.store',
+        'edit' => 'satuan.edit',
+        'update' => 'admin.satuan.update',
+        'destroy' => 'admin.satuan.destroy',
+    ]);
+    
     
     Route::get('/master-barang/stok-barang', [BarangController::class, 'index'])->name('admins.master-barangs.stok-barang');
     Route::get('/barangs/create', [BarangController::class, 'create'])->name('admins.barangs.create');

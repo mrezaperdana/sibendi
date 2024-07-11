@@ -490,7 +490,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-3.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-3.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -520,7 +520,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-2.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-2.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -550,7 +550,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-9.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-9.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -615,7 +615,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-25.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-25.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -645,7 +645,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-24.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-24.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -675,7 +675,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-20.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-20.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -740,7 +740,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-11.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-11.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -770,7 +770,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-23.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-23.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -800,7 +800,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-4.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-4.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -865,7 +865,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-12.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-12.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -895,7 +895,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-21.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-21.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -925,7 +925,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-30.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-30.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -990,7 +990,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-6.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-6.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -1020,7 +1020,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-10.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-10.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -1050,7 +1050,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-9.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-9.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -1080,7 +1080,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50px me-3">
-                                                                <img src="assets/media/avatars/300-3.jpg" class=""
+                                                                <img src="{{ asset('assets/media/avatars/300-3.jpg') }}" class=""
                                                                     alt="" />
                                                             </div>
                                                             <div class="d-flex justify-content-start flex-column">
@@ -1274,7 +1274,7 @@
 
                                         <tr>
                                             <td>
-                                                <img src="assets/media/stock/ecommerce/210.gif" class="w-50px"
+                                                <img src="{{ asset('assets/media/stock/ecommerce/210.gif') }}" class="w-50px"
                                                     alt="" />
                                             </td>
                                             <td class="ps-0">
@@ -1291,7 +1291,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img src="assets/media/stock/ecommerce/215.gif" class="w-50px"
+                                                <img src="{{ asset('assets/media/stock/ecommerce/215.gif') }}" class="w-50px"
                                                     alt="" />
                                             </td>
                                             <td class="ps-0">
@@ -1308,7 +1308,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img src="assets/media/stock/ecommerce/209.gif" class="w-50px"
+                                                <img src="{{ asset('assets/media/stock/ecommerce/209.gif') }}" class="w-50px"
                                                     alt="" />
                                             </td>
                                             <td class="ps-0">
@@ -1324,7 +1324,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img src="assets/media/stock/ecommerce/214.gif" class="w-50px"
+                                                <img src="{{ asset('assets/media/stock/ecommerce/214.gif') }}" class="w-50px"
                                                     alt="" />
                                             </td>
                                             <td class="ps-0">
@@ -1372,5 +1372,5 @@
 @stop
 
 @section('script')
-    <script src="assets/js/pengajuan/products.js"></script>
+    <script src="{{ asset('assets/js/pengajuan/products.js') }}"></script>
 @endsection
