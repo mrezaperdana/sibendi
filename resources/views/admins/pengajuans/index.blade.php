@@ -69,6 +69,12 @@
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <!--begin::Card title-->
                     <div class="card-title">
+                        <input class="form-control form-control-solid" placeholder="Pick date range"
+                            id="kt_daterangepicker_4" /></input>
+                        <button type="button" id="filterButton" class="btn btn-primary">Filter</button>
+                        <button type="button" id="resetFilterButton" class="btn btn-secondary">Reset</button>
+                    </div>
+                    <div class="card-title">
                         <!--begin::Search-->
                         <div class="d-flex align-items-center position-relative my-1">
                             <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
@@ -146,7 +152,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    
+
 
                                     <td class="text-end pe-0">
 
@@ -155,7 +161,7 @@
                                     </td>
                                     <td class="text-end pe-0">
                                         {{-- {{ \Carbon\Carbon::createFromTimestamp($items->first()->Tanggal)->formatLocalized('%d %b %Y') }} --}}
-                                        {{-- @dd($items) --}}
+
                                         {{ \Carbon\Carbon::parse($items->first()->tanggal)->formatLocalized('%d %b %Y') }}
 
                                     </td>
@@ -184,7 +190,6 @@
                                     </td>
 
                                     <td class="text-end">
-
                                         <button type="button"
                                             class="btn btn-light btn-flex btn-center btn-active-light-primary"
                                             data-bs-toggle="modal" data-bs-target="#myModal{{ $noNota }}">
@@ -223,6 +228,7 @@
                     </table>
                     <!--end::Table-->
                     <!--begin::Modal - Detail Barang-->
+
                     @foreach ($groupedPengajuan as $noNota => $items)
                         <div class="modal fade" id="myModal{{ $noNota }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -242,20 +248,21 @@
                                                     <th>Nama Barang</th>
                                                     <th>Kategori</th>
                                                     <th>Satuan</th>
-                                                    <th>jumlah</th>
+                                                    <th>Jumlah</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- @dd($items) --}}
                                                 @foreach ($items as $item)
-                                                {{-- @dd($item) --}}
                                                     <tr>
-                                                        <td>{{ $item->barang->kode_barang }}</td>
-                                                        <td>{{ $item->barang->nama_barang }}</td>
-                                                        <td>{{ $item->barang->nama_kategori }}</td>
-                                                        <td>{{ $item->barang->nama_satuan }}</td>
+                                                        <td>{{ $item->barang ? $item->barang->kode_barang : 'Tidak ditemukan' }}
+                                                        </td>
+                                                        <td>{{ $item->barang ? $item->barang->nama_barang : 'Tidak ditemukan' }}
+                                                        </td>
+                                                        <td>{{ $item->barang && $item->barang->kategori ? $item->barang->kategori->nama_kategori : 'Tidak ditemukan' }}
+                                                        </td>
+                                                        <td>{{ $item->barang && $item->barang->satuan ? $item->barang->satuan->nama_satuan : 'Tidak ditemukan' }}
+                                                        </td>
                                                         <td>{{ $item->jumlah }}</td>
-                                                        <!-- Add other details columns accordingly -->
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -270,6 +277,9 @@
                             </div>
                         </div>
                     @endforeach
+
+
+
                     <!--end::Modal - Detail Barang-->
 
                     <!--begin::Modal - Customers - Add-->
@@ -427,7 +437,12 @@
             data-kt-menu="true">
             <!--begin::Menu item-->
             <div class="menu-item px-3">
-                <a href="{{ route('pengajuan.edit', $noNota) }}" class="menu-link px-3">Verifikasi</a>
+
+                @if (isset($noNota))
+                    <a href="{{ route('pengajuan.edit', $noNota) }}" class="menu-link px-3">Verifikasi</a>
+                @else
+                    <span class="menu-link px-3">Unavailable</span>
+                @endif
             </div>
             <!--end::Menu item-->
             <!--begin::Menu item-->
@@ -440,5 +455,63 @@
     </td>
 @endsection
 @section('script')
-    <script src="assets/js/pengajuan/admin/products.js"></script>
+    <script src="assets/js/pengajuan/admin/pengajuan.js"></script>
+    <script>
+        $(document).ready(function() {
+            var start = moment().subtract(29, "days");
+            var end = moment();
+
+            function cb(start, end) {
+                $("#kt_daterangepicker_4").html(start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY"));
+            }
+
+            $("#kt_daterangepicker_4").daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    "Today": [moment(), moment()],
+                    "Yesterday": [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                    "Last 7 Days": [moment().subtract(6, "days"), moment()],
+                    "Last 30 Days": [moment().subtract(29, "days"), moment()],
+                    "This Month": [moment().startOf("month"), moment().endOf("month")],
+                    "Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1,
+                        "month").endOf("month")]
+                }
+            }, cb);
+
+            cb(start, end);
+
+            // DataTable initialization
+            const table = $('#myTable').DataTable({
+                // DataTable configuration here
+            });
+
+            // Filter function
+            function filterByDate(startDate, endDate) {
+                $.fn.dataTable.ext.search.push(
+                    function(settings, data, dataIndex) {
+                        var date = moment(data[3], "YYYY-MM-DD"); // Use the date format in your column
+                        if (
+                            (startDate === null && endDate === null) ||
+                            (startDate === null && date <= endDate) ||
+                            (startDate <= date && endDate === null) ||
+                            (startDate <= date && date <= endDate)
+                        ) {
+                            return true;
+                        }
+                        return false;
+                    }
+                );
+                table.draw();
+                $.fn.dataTable.ext.search.pop(); // Remove filter function after draw
+            }
+
+            // Apply the filter when a date range is selected
+            $('#kt_daterangepicker_4').on('apply.daterangepicker', function(ev, picker) {
+                var startDate = picker.startDate;
+                var endDate = picker.endDate;
+                filterByDate(startDate, endDate);
+            });
+        });
+    </script>
 @endsection

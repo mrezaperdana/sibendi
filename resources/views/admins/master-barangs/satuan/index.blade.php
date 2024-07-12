@@ -150,7 +150,7 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('satuan.edit', ['kode_satuan' => $item->kode_satuan]) }}"
+                                                <a href="{{ route('admin.satuan.edit', ['kode_satuan' => $item->kode_satuan]) }}"
                                                     class="menu-link px-3">Edit</a>
                                             </div>
                                             <!--end::Menu item-->

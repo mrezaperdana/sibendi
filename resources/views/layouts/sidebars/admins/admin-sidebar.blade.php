@@ -42,7 +42,7 @@
                      <!--begin:Menu item-->
                      <div class="menu-item">
                          <!--begin:Menu link-->
-                         <a class="menu-link {{ request()->is('admin/master-barang/kategori*') ? 'active' : '' }}" href="{{ route('admins.kategoris') }}">
+                         <a class="menu-link {{ request()->is('admin/master-barang/kategori*') ? 'active' : '' }}" href="{{ route('admin.kategori.index') }}">
                              <span class="menu-bullet">
                                  <span class="bullet bullet-dot"></span>
                              </span>
@@ -66,7 +66,7 @@
                      <!--begin:Menu item-->
                      <div class="menu-item">
                          <!--begin:Menu link-->
-                         <a class="menu-link {{ request()->is('admin/master-barang/stok-barang*') ? 'active' : '' }}" href="{{ route('admins.master-barangs.stok-barang') }}">
+                         <a class="menu-link {{ request()->is('admin/master-barang/stok-barang*') ? 'active' : '' }}" href="{{ route('admin.barang.index') }}">
                              <span class="menu-bullet">
                                  <span class="bullet bullet-dot"></span>
                              </span>

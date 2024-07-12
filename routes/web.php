@@ -48,9 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi'
         return view('admins.master-barangs.stok-barang');
     });
 
-    Route::get('/master-barang/kategori-barang', [AdminKategoriController::class, 'index'])->name('admins.kategoris');
-    Route::get('/master-barang/kategori-barang/{id}/edit', [AdminKategoriController::class, 'update'])->name('kategori.edit');
-    
+
     
 
 
@@ -60,13 +58,34 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi'
         'index' => 'admin.satuan.index',
         'create' => 'admin.satuan.create',
         'store' => 'admin.satuan.store',
-        'edit' => 'satuan.edit',
+        'edit' => 'admin.satuan.edit',
         'update' => 'admin.satuan.update',
         'destroy' => 'admin.satuan.destroy',
     ]);
+
+    Route::resource('master-barang/kategori-barang', AdminKategoriController::class)->parameters([
+        'kategori-barang' => 'kode_kategori',
+    ])->names([
+        'index' => 'admin.kategori.index',
+        'create' => 'admin.kategori.create',
+        'store' => 'admin.kategori.store',
+        'edit' => 'admin.kategori.edit',
+        'update' => 'admin.kategori.update',
+        'destroy' => 'admin.kategori.destroy',
+    ]);
+    Route::resource('master-barang/stok-barang', BarangController::class)->parameters([
+        'stok-barang' => 'kode_barang',
+    ])->names([
+        'index' => 'admin.barang.index',
+        'create' => 'admin.barang.create',
+        'store' => 'admin.barang.store',
+        'edit' => 'admin.barang.edit',
+        'update' => 'admin.barang.update',
+        'destroy' => 'admin.barang.destroy',
+    ]);
     
     
-    Route::get('/master-barang/stok-barang', [BarangController::class, 'index'])->name('admins.master-barangs.stok-barang');
+    // Route::get('/master-barang/stok-barang', [BarangController::class, 'index'])->name('admins.master-barangs.stok-barang');
     Route::get('/barangs/create', [BarangController::class, 'create'])->name('admins.barangs.create');
     Route::post('/barangs', [BarangController::class, 'store'])->name('barangs.store');
     Route::post('/barangs-excel', [BarangController::class, 'storeExcel'])->name('barangs.excel-store');

@@ -1,5 +1,8 @@
 @extends('layouts.main.admins.main')
 
+@section('custom-css')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@endsection
 @section('content-wrapper')
     <!--begin::Toolbar-->
     <div id="kt_app_toolbar" class="app-toolbar pt-5">
@@ -83,19 +86,9 @@
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <div class="w-100 mw-150px">
-                            <!--begin::Select2-->
-                            <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
-                                data-placeholder="Status" data-kt-ecommerce-product-filter="status">
-                                <option></option>
-                                <option value="all">All</option>
-
-                                <option value="Menunggu Konfirmasi">Menunggu Konfirmasi</option>
-                                <option value="Disetujui">Disetujui</option>
-                                <option value="Ditolak">Ditolak</option>
-                            </select>
-                            <!--end::Select2-->
-                        </div>
+                        <a href="{{ route('admin.kategori.create') }}" class="btn btn-sm btn-success ms-3 px-4 py-3">
+                            Tambah Kategori
+                        </a>
 
 
 
@@ -103,7 +96,6 @@
                     <!--end::Card toolbar-->
                 </div>
                 <!--end::Card header-->
-               
                 <!--begin::Card body-->
                 <div class="card-body pt-0">
 
@@ -143,11 +135,9 @@
                                             </div>
                                         </div>
                                     </td>
-                                    
+
                                     <td class="text-end pe-0">
-
                                         {{ $item->keterangan }}
-
                                     </td>
                                     <td class="text-end">
                                         <a href="#"
@@ -160,15 +150,25 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('kategori.edit', ['id' => $item->kode_kategori]) }}"
-                                                    class="menu-link px-3">Verifikasi</a>
+                                                <a href="{{ route('admin.kategori.edit', ['kode_kategori' => $item->kode_kategori]) }}"
+                                                    class="menu-link px-3">Edit</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
+                                            <!-- Adjusted Menu item with SweetAlert2 confirmation -->
                                             <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                    data-kt-ecommerce-product-filter="delete_row">Delete</a>
+                                                <!-- Link to trigger SweetAlert2 confirmation -->
+                                                <a href="javascript:void(0)" class="menu-link px-3"
+                                                    onclick="confirmDelete('{{ $item->kode_kategori }}', '{{ $item->nama_kategori }}')">Delete</a>
                                             </div>
+
+                                            <!-- Form for deletion -->
+                                            <form id="delete-form-{{ $item->kode_kategori }}"
+                                                action="{{ route('admin.kategori.destroy', ['kode_kategori' => $item->kode_kategori]) }}"
+                                                method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
                                             <!--end::Menu item-->
                                         </div>
                                         <!--end::Menu-->
@@ -176,145 +176,10 @@
                                 </tr>
                             @endforeach
 
-
                         </tbody>
                     </table>
                     <!--end::Table-->
-                    <!--begin::Modal - Detail Barang-->
 
-                    <!--end::Modal - Detail Barang-->
-
-                    <!--begin::Modal - Customers - Add-->
-                    <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
-                        <!--begin::Modal dialog-->
-                        <div class="modal-dialog modal-dialog-centered mw-800px">
-                            <!--begin::Modal content-->
-                            <div class="modal-content">
-                                <!--begin::Form-->
-                                <form class="form" method="POST" action="{{ route('pengajuans.store') }}"
-                                    id="kt_modal_add_customer_form">
-                                    @csrf
-                                    <!--begin::Modal header-->
-                                    <div class="modal-header" id="kt_modal_add_customer_header">
-                                        <!--begin::Modal title-->
-                                        <h2 class="fw-bold">Buat Pengajuan Baru</h2>
-                                        <!--end::Modal title-->
-                                        <!--begin::Close-->
-                                        <div id="kt_modal_add_customer_close"
-                                            class="btn btn-icon btn-sm btn-active-icon-primary">
-                                            <i class="ki-duotone ki-cross fs-1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
-                                        </div>
-                                        <!--end::Close-->
-                                    </div>
-                                    <!--end::Modal header-->
-                                    <!--begin::Modal body-->
-                                    <div class="modal-body py-10 px-lg-17">
-                                        <!--begin::Scroll-->
-                                        <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll"
-                                            data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
-                                            data-kt-scroll-max-height="auto"
-                                            data-kt-scroll-dependencies="#kt_modal_add_customer_header"
-                                            data-kt-scroll-wrappers="#kt_modal_add_customer_scroll"
-                                            data-kt-scroll-offset="300px">
-                                            <!--end::Card header-->
-
-                                            <div class="rounded border p-10">
-                                                <!--begin::Repeater-->
-                                                <div id="kt_docs_repeater_basic">
-                                                    <!--begin::Form group-->
-                                                    <div class="form-group">
-                                                        <div data-repeater-list="kt_docs_repeater_basic">
-                                                            <div data-repeater-item="" style="">
-                                                                <div class="form-group row mb-5">
-                                                                    <div class="col-md-7">
-                                                                        <label class="form-label">Kode - Nama
-                                                                            Barang:</label>
-                                                                        <!--begin::Select2-->
-                                                                        <select name="Kode_Barang" id="Kode_Barang"
-                                                                            aria-label="Select a Country"
-                                                                            data-control="selector_barang"
-                                                                            data-placeholder="Pilih Barang"
-                                                                            class="form-select form-select-solid form-select-lg fw-semibold"
-                                                                            required title="Barang belum terpilih!">
-                                                                            <option value="">Pilih barang...
-                                                                            </option>
-
-                                                                        </select>
-
-                                                                        <!--end::Select2-->
-                                                                    </div>
-
-                                                                    <div class="col-md-3">
-                                                                        <label class="form-label">Jumlah:</label>
-                                                                        <input type="text" name="Jumlah"
-                                                                            id="Jumlah" placeholder="Jumlah"
-                                                                            value="{{ old('Jumlah') }}"
-                                                                            class="form-control mb-2 mb-md-0"
-                                                                            placeholder="Masukkan jumlah pengajuan"
-                                                                            required title="Jumlah tidak boleh kosong!">
-                                                                    </div>
-
-                                                                    <div class="col-md-2">
-                                                                        <a href="javascript:;" data-repeater-delete=""
-                                                                            class="btn btn-sm btn-flex flex-center btn-light-danger mt-3 mt-md-9">
-                                                                            <i class="ki-duotone ki-trash fs-5"><span
-                                                                                    class="path1"></span><span
-                                                                                    class="path2"></span><span
-                                                                                    class="path3"></span><span
-                                                                                    class="path4"></span><span
-                                                                                    class="path5"></span></i>
-                                                                            Delete
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Form group-->
-
-                                                    <!--begin::Form group-->
-                                                    <div class="form-group">
-                                                        <a href="javascript:;" data-repeater-create=""
-                                                            class="btn btn-flex flex-center btn-light-primary">
-                                                            <i class="ki-duotone ki-plus fs-3"></i> Tambah Barang
-                                                        </a>
-                                                    </div>
-                                                    <!--end::Form group-->
-                                                </div>
-                                                <!--end::Repeater-->
-                                            </div>
-
-
-
-                                        </div>
-                                        <!--end::Scroll-->
-                                    </div>
-                                    <!--end::Modal body-->
-                                    <!--begin::Modal footer-->
-                                    <div class="modal-footer flex-center">
-                                        <!--begin::Button-->
-                                        <button type="reset" id="kt_modal_add_customer_cancel"
-                                            class="btn btn-light me-3">Discard</button>
-                                        <!--end::Button-->
-                                        <!--begin::Button-->
-                                        <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-                                            <span class="indicator-label">Submit</span>
-                                            <span class="indicator-progress">Please wait...
-                                                <span
-                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                        </button>
-                                        <!--end::Button-->
-                                    </div>
-                                    <!--end::Modal footer-->
-                                </form>
-                                <!--end::Form-->
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Modal - Customers - Add-->
                 </div>
                 <!--end::Card body-->
 
@@ -324,27 +189,34 @@
         <!--end::Content container-->
 
     </div>
-    
     <!--end::Content-->
-    <td class="text-end">
-        
-        <!--begin::Menu-->
-        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-            data-kt-menu="true">
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="" class="menu-link px-3">Verifikasi</a>
-            </div>
-            <!--end::Menu item-->
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="#" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">Delete</a>
-            </div>
-            <!--end::Menu item-->
-        </div>
-        <!--end::Menu-->
-    </td>
 @endsection
 @section('script')
     <script src="assets/js/admin/kategori/products.js"></script>
+    
+<script>
+    // Function to confirm deletion using SweetAlert2
+    function confirmDelete(kode_kategori, nama_kategori) {
+ 
+
+        Swal.fire({
+
+            text: "Are you sure you want to delete " + nama_kategori + "?",
+            icon: 'warning',
+            showCancelButton: true,
+            buttonsStyling: false,
+            confirmButtonText: "Yes, delete!",
+                    cancelButtonText: "No, cancel",
+            customClass: {
+                        confirmButton: "btn fw-bold btn-danger",
+                        cancelButton: "btn fw-bold btn-primary",
+                    },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form programmatically
+                document.getElementById('delete-form-' + kode_kategori).submit();
+            }
+        });
+    }
+</script>
 @endsection
