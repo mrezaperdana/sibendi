@@ -8,16 +8,14 @@ var KTAppEcommerceProducts = (function () {
 
     // Private functions
     var initDatatable = function () {
-        // Init datatable --- more info on datatables: https://datatables.net/manual/
+        // Init datatable
         datatable = $(table).DataTable({
             info: false,
             order: [],
             pageLength: 10,
             columnDefs: [
                 { render: DataTable.render.number(",", ".", 2), targets: 4 },
-                { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
-                { orderable: false, targets: 6 }, // Disable ordering on column 5 (Details)
-                { orderable: false, targets: 7 }, // Disable ordering on column 6 (Actions)
+                { orderable: false, targets: [0, 6, 7] }, // Disable ordering on specific columns
             ],
         });
 
@@ -27,8 +25,8 @@ var KTAppEcommerceProducts = (function () {
         });
     };
 
-    // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-    var handleSearchDatatable = () => {
+    // Search Datatable
+    var handleSearchDatatable = function () {
         const filterSearch = document.querySelector(
             '[data-kt-ecommerce-product-filter="search"]'
         );
@@ -38,7 +36,7 @@ var KTAppEcommerceProducts = (function () {
     };
 
     // Handle status filter dropdown
-    var handleStatusFilter = () => {
+    var handleStatusFilter = function () {
         const filterStatus = document.querySelector(
             '[data-kt-ecommerce-product-filter="status"]'
         );
@@ -51,48 +49,35 @@ var KTAppEcommerceProducts = (function () {
         });
     };
 
-    // Verifikasi cateogry
-    var handleverifikasiRows = () => {
-        // Select all Verifikasi buttons
+    // Verifikasi category
+    var handleVerifikasiRows = function () {
         const verifikasiButtons = table.querySelectorAll(
             '[data-kt-ecommerce-product-filter="verifikasi_row"]'
         );
 
         verifikasiButtons.forEach((d) => {
-            // Verifikasi button on click
             d.addEventListener("click", function (e) {
                 e.preventDefault();
-
-                // Get the href attribute of the link
                 const href = this.getAttribute("href");
-
-                // Redirect to the specified href
                 window.location.href = href;
             });
         });
     };
 
-    // Delete cateogry
-    var handleDeleteRows = () => {
-        // Select all delete buttons
+    // Delete category
+    var handleDeleteRows = function () {
         const deleteButtons = table.querySelectorAll(
             '[data-kt-ecommerce-product-filter="delete_row"]'
         );
 
         deleteButtons.forEach((d) => {
-            // Delete button on click
             d.addEventListener("click", function (e) {
                 e.preventDefault();
-
-                // Select parent row
                 const parent = e.target.closest("tr");
-
-                // Get category name
                 const productName = parent.querySelector(
                     '[data-kt-ecommerce-product-filter="product_name"]'
                 ).innerText;
 
-                // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
                     text:
                         "Are you sure you want to delete " + productName + "?",
@@ -108,7 +93,7 @@ var KTAppEcommerceProducts = (function () {
                 }).then(function (result) {
                     if (result.value) {
                         Swal.fire({
-                            text: "You have deleted " + productName + "!.",
+                            text: "You have deleted " + productName + "!",
                             icon: "success",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
@@ -116,7 +101,6 @@ var KTAppEcommerceProducts = (function () {
                                 confirmButton: "btn fw-bold btn-primary",
                             },
                         }).then(function () {
-                            // Remove current row
                             datatable.row($(parent)).remove().draw();
                         });
                     } else if (result.dismiss === "cancel") {
@@ -135,6 +119,56 @@ var KTAppEcommerceProducts = (function () {
         });
     };
 
+    // Function to handle date filtering
+    var filterTanggal = function () {
+        const table = $("#kt_ecommerce_products_table").DataTable();
+
+        $("#filterButton").on("click", function () {
+            var startDate = moment(
+                $("#kt_daterangepicker_4").data("daterangepicker").startDate
+            ).format("YYYY-MM-DD");
+            var endDate = moment(
+                $("#kt_daterangepicker_4").data("daterangepicker").endDate
+            ).format("YYYY-MM-DD");
+
+            // Apply date filter
+            $.fn.dataTable.ext.search.push(function (
+                settings,
+                data,
+                dataIndex
+            ) {
+                var dateCell = data[3]; // Assuming the date column is at index 3 in DataTables
+                var dateColumn = $(table.cell(dataIndex, 3).node())
+                    .text()
+                    .trim(); // Get the actual date shown in the table
+
+                // Format dateColumn to match startDate and endDate format
+                var formattedDate = moment(dateColumn, "D MMM YYYY").format(
+                    "YYYY-MM-DD"
+                );
+
+                if (
+                    (startDate === "" && endDate === "") ||
+                    (startDate === "" && formattedDate <= endDate) ||
+                    (startDate <= formattedDate && endDate === "") ||
+                    (startDate <= formattedDate && formattedDate <= endDate)
+                ) {
+                    return true;
+                }
+                return false;
+            });
+
+            table.draw();
+            $.fn.dataTable.ext.search.pop(); // Remove filter function after draw
+        });
+        // Reset date filter
+        $("#resetFilterButton").on("click", function () {
+            $("#startDate").val("");
+            $("#endDate").val("");
+            table.search("").draw(); // Clear search and redraw table
+        });
+    };
+
     // Public methods
     return {
         init: function () {
@@ -145,10 +179,11 @@ var KTAppEcommerceProducts = (function () {
             }
 
             initDatatable();
-            handleverifikasiRows();
+            handleVerifikasiRows();
             handleSearchDatatable();
             handleStatusFilter();
             handleDeleteRows();
+            filterTanggal();
         },
     };
 })();

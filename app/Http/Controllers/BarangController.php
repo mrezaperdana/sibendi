@@ -13,19 +13,21 @@ class BarangController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-
-
-        $result = Barang::join('admin_kategoris', 'admin_kategoris.kode_kategori', '=', 'barangs.kode_kategori')
+{
+    $result = Barang::join('admin_kategoris', 'admin_kategoris.kode_kategori', '=', 'barangs.kode_kategori')
         ->join('admin_satuans', 'admin_satuans.kode_satuan', '=', 'barangs.kode_satuan')
         ->select('barangs.kode_barang','barangs.nama_barang', 'admin_kategoris.nama_kategori', 'admin_satuans.nama_satuan', 'barangs.harga_satuan', 'barangs.stok')
         ->get();
 
+    $select_kategori = $result->unique('nama_kategori');
+
     // Pass the values to the view
-    return view('admins.master-barangs.stok-barang', [
-        'barang' => $result
+    return view('admins.master-barangs.stok-barang.index', [
+        'barang' => $result,
+        'select_kategori' => $select_kategori
     ]);
-    }
+}
+
 
     /**
      * Show the form for creating a new resource.
