@@ -20,6 +20,9 @@ return new class extends Migration
             $table->integer('harga_satuan')->comment('Price per unit');
             $table->integer('qty')->comment('Quantity');
             $table->timestamps();
+
+            $table->foreign('kode_barang')->references('kode_barang')->on('barangs')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
