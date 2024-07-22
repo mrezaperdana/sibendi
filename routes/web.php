@@ -37,20 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi'
     Route::post('admins.stocks.status-barang', [AdminController::class, 'changePassword'])->name('AdminChangePassword');
     Route::post('admins.stocks.stok-barang', [AdminController::class, 'index'])->name('AdminChangePassword');
 
-
     Route::get('dashboards', [AdminController::class, 'index'])->name('admins.dashboards');
-
-    Route::get('/admin-satuan-barang', function () {
-        return view('admins.master-barangs.satuan');
-    });
-
-    Route::get('/admin-stok-barang', function () {
-        return view('admins.master-barangs.stok-barang');
-    });
-
-
-    
-
 
     Route::resource('master-barang/satuan-barang', AdminSatuanController::class)->parameters([
         'satuan-barang' => 'kode_satuan',
@@ -84,8 +71,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi'
         'destroy' => 'admin.barang.destroy',
     ]);
     
+    Route::get('/pengajuan/daftar-pengajuan', [AdminPengajuanController::class, 'index'])->name('admins.pengajuans');
+    Route::get('/pengajuan/{noNota}/verifikasi', [AdminPengajuanController::class, 'edit'])->name('pengajuan.edit');
+    Route::patch('/confirm/{noNota}', [AdminPengajuanController::class, 'confirm'])->name('pengajuan.confirm');
+    Route::patch('/reject/{noNota}', [AdminPengajuanController::class, 'tolak'])->name('pengajuan.tolak');
     
-    // Route::get('/master-barang/stok-barang', [BarangController::class, 'index'])->name('admins.master-barangs.stok-barang');
+    Route::get('/transaksi/barang-keluar', [AdminStockController::class, 'getBarangKeluar'])->name('admins.transaksis.barang-keluar');
+    Route::get('/transaksi/barang-rusak', [AdminStockController::class, 'getBarangRusak'])->name('admins.transaksis.barang-rusak');
+    Route::get('/transaksi/barang-masuk', [AdminStockController::class, 'getBarangMasuk'])->name('admins.transaksis.barang-masuk');
+    
     Route::get('/barangs/create', [BarangController::class, 'create'])->name('admins.barangs.create');
     Route::post('/barangs', [BarangController::class, 'store'])->name('barangs.store');
     Route::post('/barangs-excel', [BarangController::class, 'storeExcel'])->name('barangs.excel-store');
@@ -93,31 +87,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi'
     Route::patch('/barangs/{barang}', [BarangController::class, 'update'])->name('barangs.update');
     Route::delete('/barangs/{barang}', [BarangController::class, 'destroy'])->name('barangs.destroy');
 
-
-    // Route::get('/master-barang/stok-barang', [AdminKategoriController::class, 'index'])->name('admins.stoks');
-
-    Route::get('/transaksi/barang-keluar', [AdminStockController::class, 'getBarangKeluar'])->name('admins.transaksis.barang-keluar');
-    Route::get('/transaksi/barang-rusak', [AdminStockController::class, 'getBarangRusak'])->name('admins.transaksis.barang-rusak');
-    Route::get('/transaksi/barang-masuk', [AdminStockController::class, 'getBarangMasuk'])->name('admins.transaksis.barang-masuk');
-    
-    
     Route::get('/daftar-pengguna', [AdminUserController::class, 'index'])->name('admins.penggunas.index');
 
 
-
-    // Route::get('tambah-barang', [AdminStockController::class, 'getTambahBarang'])->name('admins.stocks.tambah-barang');
     Route::get('add-product', [AdminStockController::class, 'addProduct'])->name('admins.add.add-product');
     Route::post('post-product', [AdminStockController::class, 'postProduct'])->name('admins.post.post-product');
-    // Route::resource('dashboards', AdminController::class);
+ 
+    
     Route::resource('stocks', AdminStockController::class);
 
-
-
-    Route::get('/pengajuan/daftar-pengajuan', [AdminPengajuanController::class, 'index'])->name('admins.pengajuans');
-    Route::get('/pengajuan/{noNota}/verifikasi', [AdminPengajuanController::class, 'edit'])->name('pengajuan.edit');
-    Route::patch('/confirm/{noNota}', [AdminPengajuanController::class, 'confirm'])->name('pengajuan.confirm');
-    Route::patch('/reject/{noNota}', [AdminPengajuanController::class, 'tolak'])->name('pengajuan.tolak');
-    // Route::get('/pengajuan/{totalPriceSum}', [AdminPengajuanController::class, 'setuju'])->name('pengajuan.setuju');
 
 });
 
@@ -128,7 +106,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::post('admins.stocks.status-barang', [AdminController::class, 'changePassword'])->name('AdminChangePassword');
     Route::post('admins.stocks.stok-barang', [AdminController::class, 'index'])->name('AdminChangePassword');
     Route::get('dashboards', [UserController::class, 'index'])->name('users.dashboards');
-
 
     Route::get('pengajuan-saya', [PengajuanController::class, 'index'])->name('users.pengajuans');
     Route::get('/pengajuan/baru', [PengajuanController::class, 'create'])->name('users.pengajuans.create');

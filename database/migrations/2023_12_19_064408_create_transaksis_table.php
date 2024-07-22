@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('keterangan')->nullable()->comment('Description');
             $table->integer('status')->default(0)->comment('Transaction status');
             $table->timestamps();
+
+            $table->foreign('kode_barang')->references('kode_barang')->on('barangs')->onDelete('cascade')->onUpdate('cascade');
+            
         });
     }
 
