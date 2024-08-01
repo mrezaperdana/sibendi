@@ -6,9 +6,47 @@ use App\Models\Barang;
 use Excel;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class BarangController extends Controller
 {
+
+   
+    public function generateDocument($kode_barang)
+    {
+        // Load the template
+        $templateProcessor = new TemplateProcessor(public_path('assets/template/template.docx'));
+
+        // Fetch data from your table
+        $data = Barang::select('kode_barang', 'stok')->get();
+        $masuk = BarangMasuk::select('kode_barang','qty')->get();
+        $keluar = BarangKeluar::select('kode_barang','qty')->get();
+        $rusak = BarangRusak::select('kode_barang','qty')->get();
+        $transaksi = Transaksi::select('no_nota', 'penerima')
+        $data = joined of above
+        // Iterate over the data and add it to the table in the template
+        $templateProcessor->cloneRow('rowIdentifier', $data->count());
+
+        ${row}	${tanggal}	${pemesan}	${rusak}	${masuk}	${keluar}	${stok}
+
+        foreach ($data as $index => $item) {
+            $templateProcessor->setValue("row#".($index + 1), $item->row iteration);
+            $templateProcessor->setValue("tanggal#".($index + 1), $item->tanggal);
+            $templateProcessor->setValue("pemesan#".($index + 1), $item->pemesan);
+            $templateProcessor->setValue("rusak#".($index + 1), $item->rusak);
+            $templateProcessor->setValue("masuk#".($index + 1), $item->masuk);
+            $templateProcessor->setValue("keluar#".($index + 1), $item->keluar);
+            $templateProcessor->setValue("stok#".($index + 1), $item->stok);
+        }
+
+        // Save the document to the server
+        $fileName = 'generated_document.docx';
+        $templateProcessor->saveAs($fileName);
+
+        // Download the document
+        return response()->download($fileName)->deleteFileAfterSend(true);
+        return redirect()->route('admins.stocks.stok-barang');
+    }
     /**
      * Display a listing of the resource.
      */

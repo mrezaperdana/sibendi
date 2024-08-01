@@ -28,13 +28,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $this->call(KategoriSeeder::class);
+        $this->call(SatuanSeeder::class);
+        $this->call(BarangSeeder::class);
         $this->call(BarangKeluarSeeder::class);
         $this->call(BarangMasukSeeder::class);
         $this->call(BarangRusakSeeder::class);
-        $this->call(BarangSeeder::class);
         $this->call(TransaksiSeeder::class);
-        $this->call(KategoriSeeder::class);
-        $this->call(SatuanSeeder::class);
         $this->call(UserSeeder::class);
     }
 }

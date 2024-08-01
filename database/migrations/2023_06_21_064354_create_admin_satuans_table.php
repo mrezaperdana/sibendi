@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin_satuans', function (Blueprint $table) {
-            $table->id('kode_satuan');
+            $table->bigIncrements('kode_satuan');
             $table->string('nama_satuan')->index()->comment('Name of the satuan');
             $table->text('keterangan')->nullable()->comment('Description of the satuan');
             $table->timestamps();

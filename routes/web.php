@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','check.admin.sibendi'
         'update' => 'admin.barang.update',
         'destroy' => 'admin.barang.destroy',
     ]);
+    Route::get('/generate-document', [BarangController::class, 'generateDocument'])->name('admins.cetak');
     
     Route::get('/pengajuan/daftar-pengajuan', [AdminPengajuanController::class, 'index'])->name('admins.pengajuans');
     Route::get('/pengajuan/{noNota}/verifikasi', [AdminPengajuanController::class, 'edit'])->name('pengajuan.edit');
@@ -106,6 +107,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::post('admins.stocks.status-barang', [AdminController::class, 'changePassword'])->name('AdminChangePassword');
     Route::post('admins.stocks.stok-barang', [AdminController::class, 'index'])->name('AdminChangePassword');
     Route::get('dashboards', [UserController::class, 'index'])->name('users.dashboards');
+
+    Route::get('profile', [PengajuanController::class, 'index'])->name('users.profile');
 
     Route::get('pengajuan-saya', [PengajuanController::class, 'index'])->name('users.pengajuans');
     Route::get('/pengajuan/baru', [PengajuanController::class, 'create'])->name('users.pengajuans.create');

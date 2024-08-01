@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\AdminKategori;
+use Illuminate\Support\Facades\DB;
 
 class KategoriSeeder extends Seeder
 {
@@ -14,8 +15,16 @@ class KategoriSeeder extends Seeder
     
      public function run()
      {
-         // Truncate the existing records
-         AdminKategori::truncate();
+         
+           // Disable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        
+        // Truncate the existing records
+        AdminKategori::truncate();
+        
+        // Re-enable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        
      
          $csvFile = fopen(base_path("database/data/kategori.csv"), "r");
      
