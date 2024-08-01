@@ -59,10 +59,10 @@
 								<!--begin::Input group-->
 								<div class="fv-row mb-10">
 									<!--begin::Label-->
-									<label class="form-label fs-6 fw-bold text-dark">Email</label>
+									<label class="form-label fs-6 fw-bold text-dark">Email or Username</label>
 									<!--end::Label-->
 									<!--begin::Input-->
-									<input class="form-control form-control-lg form-control-solid" type="email" name="email" autocomplete="off" value="{{old('email')}}" />
+									<input class="form-control form-control-lg form-control-solid" type="text" name="login" autocomplete="off" value="{{old('login')}}" />
 									<!--end::Input-->
 								</div>
 								<!--end::Input group-->

@@ -22,15 +22,15 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        // Fetch unique No_Nota values with associated Kode_Barang and Tanggal
+        // Fetch unique no_nota values with associated kode_barang and tanggal
         $pengajuan = Transaksi::with('barang')
-            ->select('No_Nota', 'Penerima', 'Status', 'Tanggal', 'Jumlah', DB::raw('GROUP_CONCAT(Kode_Barang) as Kode_Barang'))
-            ->groupBy('No_Nota', 'Penerima', 'Status', 'Tanggal', 'Jumlah')
+            ->select('no_nota', 'penerima', 'status', 'tanggal', 'jumlah', DB::raw('GROUP_CONCAT(kode_barang) as kode_barang'))
+            ->groupBy('no_nota', 'penerima', 'status', 'tanggal', 'jumlah')
             ->get();
 
-        // Organize data into a structure based on No_Nota
-        $groupedPengajuan = $pengajuan->groupBy('No_Nota');
-        $select_barang = Barang::select('Kode_Barang', 'Nama_Barang', 'Kategori', 'Unit')->get();
+        // Organize data into a structure based on no_nota
+        $groupedPengajuan = $pengajuan->groupBy('no_nota');
+        $select_barang = Barang::select('kode_barang', 'nama_barang', 'kode_kategori', 'kode_satuan')->get();
         // dd($groupedPengajuan);
         return view('users.pengajuans.index', compact('groupedPengajuan', 'select_barang'));
     }
@@ -43,7 +43,7 @@ class PengajuanController extends Controller
     public function create()
     {
         //
-        $result = Barang::select('Kode_Barang', 'Nama_Barang')->get();
+        $result = Barang::select('kode_barang', 'nama_barang')->get();
         return view('users.pengajuans.create', [
             'select_barang'  => $result
         ]);
@@ -51,14 +51,14 @@ class PengajuanController extends Controller
 
     private function generateNoNota()
     {
-        // Get the last highest No_Nota with 'TU-' prefix from the database
-        $lastHighestNoNota = Transaksi::where('No_Nota', 'like', 'TU-%')->max('No_Nota');
+        // Get the last highest no_nota with 'TU-' prefix from the database
+        $lastHighestNoNota = Transaksi::where('no_nota', 'like', 'TU-%')->max('no_nota');
 
         // Extract the numeric part and increment it
         $numericPart = (int)substr($lastHighestNoNota, 3); // Assuming 'TU-' prefix
         $nextNumericPart = $numericPart + 1;
 
-        // Generate the new No_Nota
+        // Generate the new no_nota
         $newNoNota = 'TU-' . str_pad($nextNumericPart, 5, '0', STR_PAD_LEFT); // Assuming 5 digits
 
         return $newNoNota;
@@ -70,15 +70,16 @@ class PengajuanController extends Controller
 
     public function store(Request $request)
     {
+    
         // Get the current date and time in the server's timezone (UTC)
-        $Tanggal = Carbon::now();
+        $tanggal = Carbon::now();
 
         // Convert the server's timezone to the user's timezone if needed
         // Replace 'Asia/Jakarta' with the appropriate timezone for your users
-        $Tanggal->setTimezone('Asia/Jakarta');
+        $tanggal->setTimezone('Asia/Jakarta');
 
-        // Generate a single No_Nota for all records
-        $No_Nota = $this->generateNoNota();
+        // Generate a single no_nota for all records
+        $no_nota = $this->generateNoNota();
 
         // Access the repeater array
         $repeaterData = $request->input('kt_docs_repeater_basic', []);
@@ -86,11 +87,11 @@ class PengajuanController extends Controller
         // Loop through the repeater data
         foreach ($repeaterData as $data) {
             $datasave = [
-                'Tanggal' => $Tanggal,
-                'Kode_Barang' => $data['Kode_Barang'],
-                'Jumlah' => $data['Jumlah'],
-                'No_Nota' => $No_Nota,
-                'Penerima' => 'UMUM',
+                'tanggal' => $tanggal,
+                'kode_barang' => $data['kode_barang'],
+                'jumlah' => $data['jumlah'],
+                'no_nota' => $no_nota,
+                'penerima' => 'UMUM',
             ];
 
             // Use Eloquent create method for model insert

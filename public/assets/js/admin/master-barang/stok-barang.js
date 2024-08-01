@@ -71,125 +71,141 @@ var KTAppEcommerceProducts = (function () {
     };
 
     // Define columns to export
-    const exportColumns = [ 1, 2,3,4,5,6]; // Specify the column indexes you want to export
+    const exportColumns = [1, 2, 3, 4, 5, 6]; // Specify the column indexes you want to export
     // Hook export buttons
-var exportButtons = () => {
-    const documentTitle = "Laporan Stok Barang";
+    var exportButtons = () => {
+        const documentTitle = "Laporan Stok Barang";
 
-    var buttons = new $.fn.dataTable.Buttons(table, {
-        buttons: [
-            {
-                extend: "copyHtml5",
-                title: documentTitle,
-                exportOptions: {
-                    columns: exportColumns,
+        var buttons = new $.fn.dataTable.Buttons(table, {
+            buttons: [
+                {
+                    extend: "copyHtml5",
+                    title: documentTitle,
+                    exportOptions: {
+                        columns: exportColumns,
+                    },
                 },
-            },
-            {
-                extend: "excelHtml5",
-                title: documentTitle,
-                exportOptions: {
-                    columns: exportColumns,
+                {
+                    extend: "excelHtml5",
+                    title: documentTitle,
+                    exportOptions: {
+                        columns: exportColumns,
+                    },
                 },
-            },
-            {
-                extend: "csvHtml5",
-                title: documentTitle,
-                exportOptions: {
-                    columns: exportColumns,
+                {
+                    extend: "csvHtml5",
+                    title: documentTitle,
+                    exportOptions: {
+                        columns: exportColumns,
+                    },
                 },
-            },
-            {
-                extend: "pdfHtml5",
-                title: documentTitle,
-                orientation: 'landscape', 
-                exportOptions: {
-                    columns: exportColumns,
-                },
-                customize: function (doc) {
-                    // Add header to each page
-                    doc['header'] = (function() {
-                        return {
-                            columns: [
-                                {
-                                    text: 'Laporan Stok Barang',
-                                    alignment: 'left',
-                                    fontSize: 12,
-                                    margin: [20, 10]
-                                }
-                            ]
+                {
+                    extend: "pdfHtml5",
+                    title: documentTitle,
+                    orientation: "landscape",
+                    exportOptions: {
+                        columns: exportColumns,
+                    },
+                    customize: function (doc) {
+                        // Add header to each page
+                        doc["header"] = function () {
+                            return {
+                                columns: [
+                                    {
+                                        text: "Laporan Stok Barang",
+                                        alignment: "left",
+                                        fontSize: 12,
+                                        margin: [20, 10],
+                                    },
+                                ],
+                            };
                         };
-                    });
-                    
-                    // Add footer to each page
-                    doc['footer'] = (function(page, pages) {
-                        return {
-                            columns: [
-                                {
-                                    alignment: 'left',
-                                    text: ['Page ', { text: page.toString() }, ' of ', { text: pages.toString() }],
-                                    fontSize: 10,
-                                    margin: [20, 0]
-                                },
-                                {
-                                    alignment: 'right',
-                                    text: 'Generated on ' + new Date().toLocaleDateString(),
-                                    fontSize: 10,
-                                    margin: [0, 0, 20, 0]
-                                }
-                            ]
-                        };
-                    });
-                    
-                    // Customize the layout and styling
-                    doc.content[1].table.widths = ['20%', '20%', '20%', '20%', '10%', '10%'];  // Adjust column widths
-                    var rowCount = doc.content[1].table.body.length;
 
-                    for (var i = 1; i < rowCount; i++) {
-                        // Apply alternating row colors
-                        if (i % 2 === 0) {
-                            doc.content[1].table.body[i].forEach(function(cell) {
-                                cell.fillColor = '#f3f3f3';
-                            });
+                        // Add footer to each page
+                        doc["footer"] = function (page, pages) {
+                            return {
+                                columns: [
+                                    {
+                                        alignment: "left",
+                                        text: [
+                                            "Page ",
+                                            { text: page.toString() },
+                                            " of ",
+                                            { text: pages.toString() },
+                                        ],
+                                        fontSize: 10,
+                                        margin: [20, 0],
+                                    },
+                                    {
+                                        alignment: "right",
+                                        text:
+                                            "Generated on " +
+                                            new Date().toLocaleDateString(),
+                                        fontSize: 10,
+                                        margin: [0, 0, 20, 0],
+                                    },
+                                ],
+                            };
+                        };
+
+                        // Customize the layout and styling
+                        doc.content[1].table.widths = [
+                            "20%",
+                            "20%",
+                            "20%",
+                            "20%",
+                            "10%",
+                            "10%",
+                        ]; // Adjust column widths
+                        var rowCount = doc.content[1].table.body.length;
+
+                        for (var i = 1; i < rowCount; i++) {
+                            // Apply alternating row colors
+                            if (i % 2 === 0) {
+                                doc.content[1].table.body[i].forEach(function (
+                                    cell
+                                ) {
+                                    cell.fillColor = "#f3f3f3";
+                                });
+                            }
                         }
-                    }
 
-                    // Add a title to the PDF document
-                    doc.styles.tableHeader.fontSize = 12;
-                    doc.styles.tableHeader.bold = true;
-                    doc.styles.tableHeader.color = 'white';
-                    doc.styles.tableHeader.fillColor = '#1a73e8';
-                    doc.content[0].text = 'Laporan Stok Barang';
-                    doc.content[0].alignment = 'center';
-                    doc.content[0].fontSize = 16;
-                    doc.content[0].bold = true;
-                    doc.content[0].margin = [0, 0, 0, 20];
-                }
-            },
-        ],
-    })
-    .container()
-    .appendTo($("#kt_datatable_example_buttons"));
+                        // Add a title to the PDF document
+                        doc.styles.tableHeader.fontSize = 12;
+                        doc.styles.tableHeader.bold = true;
+                        doc.styles.tableHeader.color = "white";
+                        doc.styles.tableHeader.fillColor = "#1a73e8";
+                        doc.content[0].text = "Laporan Stok Barang";
+                        doc.content[0].alignment = "center";
+                        doc.content[0].fontSize = 16;
+                        doc.content[0].bold = true;
+                        doc.content[0].margin = [0, 0, 0, 20];
+                    },
+                },
+            ],
+        })
+            .container()
+            .appendTo($("#kt_datatable_example_buttons"));
 
-    // Hook dropdown menu click event to datatable export buttons
-    const exportButtons = document.querySelectorAll(
-        "#kt_datatable_example_export_menu [data-kt-export]"
-    );
-    exportButtons.forEach((exportButton) => {
-        exportButton.addEventListener("click", (e) => {
-            e.preventDefault();
+        // Hook dropdown menu click event to datatable export buttons
+        const exportButtons = document.querySelectorAll(
+            "#kt_datatable_example_export_menu [data-kt-export]"
+        );
+        exportButtons.forEach((exportButton) => {
+            exportButton.addEventListener("click", (e) => {
+                e.preventDefault();
 
-            // Get clicked export value
-            const exportValue = e.target.getAttribute("data-kt-export");
-            const target = document.querySelector(
-                ".dt-buttons .buttons-" + exportValue
-            );
+                // Get clicked export value
+                const exportValue = e.target.getAttribute("data-kt-export");
+                const target = document.querySelector(
+                    ".dt-buttons .buttons-" + exportValue
+                );
 
-            // Trigger click event on hidden datatable export buttons
-            target.click();
+                // Trigger click event on hidden datatable export buttons
+                target.click();
+            });
         });
-    });
-};
+    };
 
     // Delete cateogry
     var handleDeleteRows = () => {
@@ -254,6 +270,37 @@ var exportButtons = () => {
         });
     };
 
+    // Function to handle date filtering
+    var filterTanggal = () => {
+        const table = $("#myTable").DataTable();
+
+        $("#filterButton").on("click", function () {
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+
+            // Apply date filter
+            $.fn.dataTable.ext.search.push(function (
+                settings,
+                data,
+                dataIndex
+            ) {
+                var date = data[3]; // Use data for the date column (index 3)
+                if (
+                    (startDate === "" && endDate === "") ||
+                    (startDate === "" && date <= endDate) ||
+                    (startDate <= date && endDate === "") ||
+                    (startDate <= date && date <= endDate)
+                ) {
+                    return true;
+                }
+                return false;
+            });
+
+            table.draw();
+            $.fn.dataTable.ext.search.pop(); // Remove filter function after draw
+        });
+    };
+
     // Public methods
     return {
         init: function () {
@@ -269,6 +316,7 @@ var exportButtons = () => {
             handleSearchDatatable();
             handleStatusFilter();
             handleDeleteRows();
+            filterTanggal();
         },
     };
 })();

@@ -12,14 +12,19 @@ var KTSigninGeneral = (function () {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
         validator = FormValidation.formValidation(form, {
             fields: {
-                email: {
+                login: {
                     validators: {
-                        regexp: {
-                            regexp: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                            message: "The value is not a valid email address",
+                        callback: {
+                            message: 'The value is not a valid email address or username',
+                            callback: function (input) {
+                                // Check if the input value is a valid email or username
+                                var value = input.value;
+                                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                return emailRegex.test(value) || value.length > 0;
+                            }
                         },
                         notEmpty: {
-                            message: "Email address is required",
+                            message: "Email address or username is required",
                         },
                     },
                 },
@@ -93,7 +98,7 @@ var KTSigninGeneral = (function () {
                         .catch(function (error) {
                             // Show error message popup for AJAX failure
                             Swal.fire({
-                                text: "Sorry, looks like there are some errors detected, please try again.aaa" + error,
+                                text: "Username atau password salah." ,
                                 icon: "error",
                                 buttonsStyling: false,
                                 confirmButtonText: "Ok, got it!",
@@ -112,7 +117,7 @@ var KTSigninGeneral = (function () {
                 } else {
                     // Show validation error message popup
                     Swal.fire({
-                        text: "Sorry, looks like there are some errors detected, please try again. aaa",
+                        text: "Sorry, looks like there are some errors detected, please try again.",
                         icon: "error",
                         buttonsStyling: false,
                         confirmButtonText: "Ok, got it!",

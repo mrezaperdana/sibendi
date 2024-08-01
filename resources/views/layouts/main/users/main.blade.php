@@ -74,7 +74,7 @@
 						</div>
 						<!--end::Sidebar mobile toggle-->
 						<!--begin::Logo-->
-						<a href="../dist/index.html" class="app-sidebar-logo">
+						<a href="#" class="app-sidebar-logo">
 							<img alt="Logo" src="assets/media/logos/default.svg" class="h-30px theme-light-show" />
 							<img alt="Logo" src="assets/media/logos/default-dark.svg" class="h-30px theme-dark-show" />
 						</a>

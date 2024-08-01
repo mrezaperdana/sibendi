@@ -20,10 +20,18 @@ return new class extends Migration
             $table->integer('stok')->default(0)->comment('Stock quantity');
             $table->timestamps();
             
-            $table->foreign('kode_satuan')->references('kode_satuan')->on('admin_satuans')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('kode_kategori')->references('kode_kategori')->on('admin_kategoris')->onDelete('cascade')->onUpdate('cascade');
-         
-          
+            // Foreign key constraints
+            $table->foreign('kode_satuan')
+                  ->references('kode_satuan')
+                  ->on('admin_satuans')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+    
+            $table->foreign('kode_kategori')
+                  ->references('kode_kategori')
+                  ->on('admin_kategoris')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
         });
     }
 
